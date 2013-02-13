@@ -1,0 +1,7 @@
+@(jobs: Seq[models.Job])
+<h1>Jobs</h1>
+<ul>
+@for(job <- jobs) {
+  <li>@job.id - @job.dueDate - @*<a href="@controllers.routes.Jobs.show(job.id)">details</a>*@</li>
+}
+</ul>
