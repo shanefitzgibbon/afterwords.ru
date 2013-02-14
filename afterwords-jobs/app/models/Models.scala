@@ -1,10 +1,12 @@
 package models
 
 import java.util.Date
-import org.squeryl.PrimitiveTypeMode._
-import org.squeryl.KeyedEntity
-import org.squeryl.dsl.OneToMany
-import org.squeryl.dsl.ManyToOne
+import com.mongodb.casbah.Imports._
+import com.novus.salat._
+import com.novus.salat.global._
+import com.novus.salat.dao._
+import com.novus.salat.annotations._
+import Database.mongoDB
 
 //abstract class User(email: String, name: String, password: String)
 //case class Editor(email: String, name: String, password: String) extends User(email, name, password)
@@ -12,21 +14,22 @@ import org.squeryl.dsl.ManyToOne
 //case class Administrator(email: String, name: String, password: String) extends User(email, name, password)
 
 case class Job(
-  id: Long,
+  @Key("_id") id: ObjectId = new ObjectId,
   created: Date,
   createdBy: String,
   completed: Boolean,
   dueDate: Option[Date],
   assignedTo: Option[String],
-  reviewedBy: Option[String]) extends KeyedEntity[Long]
+  reviewedBy: Option[String],
+  originalDocument: Document/*,
+  versions: List[Version]*/)
 
 case class Document(
-  id: Long,
-  jobId: Long,
   created: Date,
-  createdBy: String) extends KeyedEntity[Long] {
+  createdBy: String,
+  text: String  ){
 
-  lazy val versions: OneToMany[Version] = Database.documentToVersions.left(this)
+//  lazy val versions: OneToMany[Version] = Database.documentToVersions.left(this)
 }
 
 case class Version(
@@ -35,9 +38,9 @@ case class Version(
   created: Date,
   createdBy: String,
   versionNo: Int,
-  uri: String) extends KeyedEntity[Long] {
+  uri: String){
 
-  lazy val document: ManyToOne[Document] = Database.documentToVersions.right(this)
+//  lazy val document: ManyToOne[Document] = Database.documentToVersions.right(this)
 }
 
 case class Payment(
@@ -47,64 +50,47 @@ case class Payment(
   estimatedAmount: BigDecimal,
   paymentAmount: Option[BigDecimal],
   paymentDate: Option[Date],
-  paymentRef: Option[String]) extends KeyedEntity[Long]
+  paymentRef: Option[String])
 
-object Job {
-  import Database.jobsTable
+object Job extends ModelCompanion[Job, ObjectId]{
 
-  /**
-   * Adds a job
-   */
-  def insert(job: Job) = inTransaction {
-    jobsTable.insert(job.copy())
-  }
+  val jobsCollection = mongoDB("jobs")
+  
+  val dao = new SalatDAO[Job, ObjectId](collection = jobsCollection) {}
+  
+//  def insert(job: Job) = insert(job, WriteConcern.Safe)
   
   ///Queries
   
-  def findAll = inTransaction{
-    from (jobsTable)(job => select(job) orderBy(job.dueDate desc)).toList
-  }
 }
 
 object Document {
-  import Database.documentsTable
   
   def findById(id: Long): Document = null
 
   /**
    * Adds a document
    */
-  def insert(document: Document) = inTransaction {
-    documentsTable.insert(document.copy())
-  }
+  def insert(document: Document) = null
 }
 
 object Version {
-  import Database.versionsTable
   /**
    * Adds a version to document
    */
-  def addVersion(version: Version, document: Document) = inTransaction {
-    document.versions.associate(version.copy())
-  }
+  def addVersion(version: Version, document: Document) = null
   
   /**
    * Insert a version
    */
-  def insert(version: Version) = inTransaction {
-    versionsTable.insert(version.copy())
-  }
+  def insert(version: Version) = null
 }
 
 object Payment {
-  import Database.paymentsTable
-  
   /**
    * Insert a payment
    */
-  def insert(payment: Payment) = inTransaction {
-    paymentsTable.insert(payment.copy())
-  }
+  def insert(payment: Payment) = null
 }
 
 
