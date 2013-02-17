@@ -1,53 +1,96 @@
-import models.Job
-
-import org.scalatest.FlatSpec
-import org.scalatest.matchers.ShouldMatchers
+import org.specs2.mutable._
+import play.api._
 import play.api.test._
 import play.api.test.Helpers._
+import org.junit.runner.RunWith
+import org.specs2.runner.JUnitRunner
 
-import org.squeryl.PrimitiveTypeMode.inTransaction
-
-class JobSpec extends FlatSpec with ShouldMatchers {
+@RunWith(classOf[JUnitRunner])
+class JobSpec extends Specification {
   
-  "A Job" should "be insertable into the jobs table" in {
-    running(FakeApplication(additionalConfiguration = inMemoryDatabase())){
-      inTransaction{
-        val job = Job.insert(Job(0, date("2013-01-31"), "JobSpec1@test.com", false, Some(date("2013-02-01")), None, None))
-        job.id should not equal (0)
-      }
-    }
+  import models._
+  import com.mongodb.casbah.Imports._
+  import org.bson.types.ObjectId
+
+  def mongoTestDatabase() = {
+    Map("mongodb.default.db" -> "afterwords-test")
   }
   
-  it should "on creation, create a document version and associate it with the job" is (pending)  
+  step {
+      running(FakeApplication(additionalConfiguration = mongoTestDatabase())) {
+        Job.remove(MongoDBObject.empty)
+      }
+  }
   
-  it should "on creation, populate the created field with the current date and time" is (pending)
   
-  it should "on creation, populate the 'created by' with the current user" is (pending)
-  
-  it should "on creation, initialise a payment process" is (pending)
-  
-  it should "be possible to get a list of pending jobs for a customer" is (pending)
-  
-  it should "be possible to get a list of completed jobs for a customer" is (pending)
-  
-  it should "be possible to get a list of assigned jobs for an editor" is (pending)
-  
-  it should "be possible to get a list of completed jobs for an editor" is (pending)
-  
-  it should "be possible to get a list of jobs pending review for an editor" is (pending)
-  
-  it should "be possible to get a list of jobs reviewed by an editor" is (pending)
-  
-  it should "be able to be completed by an editor" is (pending)
-  
-  it should "on completion have at least an original version and a final version" is (pending)
-  
-  it should "be able to be reviewed by an editor" is (pending)
-  
-  it should "not be able to be review by the same editor who completed the job" is (pending)
-  
-  it should "be escalated to an administrator if not completed by the due date" is (pending)
+  "A Job" should {
+    
+//    doFirst {
+//      //setup database
+//    }
+    
+    "be insertable into the jobs table" in {
+      running(FakeApplication(additionalConfiguration = mongoTestDatabase())) {
+        val testJob = Job(
+          id=new ObjectId, 
+          created=date("2013-01-31"),
+          createdBy="jobspectest",
+          completed=false,
+          dueDate=Some(date("2013-02-01")),
+          assignedTo=None,
+          reviewedBy=None,
+          originalDocument=Document(
+            created=date("2013-01-31"),
+            createdBy="jobspectest",
+            text= testText  
+          ),
+          versions= List.empty[Version])
+        val newJobId = Job.insert(testJob)
+        newJobId should not be (None)
+        val foundJob = Job.findOneById(newJobId.get)
+        foundJob should not be (None)
+      }
+    }
+    
+    "on creation, create a document version and associate it with the job" in { pending }  
+    
+    "on creation, populate the created field with the current date and time" in { pending }
+    
+    "on creation, populate the 'created by' with the current user" in { pending }
+    
+    "on creation, initialise a payment process" in { pending }
+    
+    "be possible to get a list of pending jobs for a customer" in { pending }
+    
+    "be possible to get a list of completed jobs for a customer" in { pending }
+    
+    "be possible to get a list of assigned jobs for an editor" in { pending }
+    
+    "be possible to get a list of completed jobs for an editor" in { pending }
+    
+    "be possible to get a list of jobs pending review for an editor" in { pending }
+    
+    "be possible to get a list of jobs reviewed by an editor" in { pending }
+    
+    "be able to be completed by an editor" in { pending }
+    
+    "on completion have at least an original version and a final version" in { pending }
+    
+    "be able to be reviewed by an editor" in { pending }
+    
+    "not be able to be review by the same editor who completed the job" in { pending }
+    
+    "be escalated to an administrator if not completed by the due date" in { pending }
+  }
   
   def date(str: String) = new java.text.SimpleDateFormat("yyyy-MM-dd").parse(str)
+  
+  val testText = """
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non accumsan dolor. Morbi mollis justo ut mi tempus sollicitudin. Duis gravida, sem nec molestie vulputate, ligula purus tincidunt sapien, et lacinia mi velit posuere eros. In condimentum semper lectus eu pellentesque. Ut sollicitudin consequat neque vulputate porta. Etiam semper dapibus tempus. Morbi ut lectus nec nunc ultricies ullamcorper ut eu sem. Donec hendrerit diam porta lacus fringilla quis convallis quam faucibus. Suspendisse lectus nulla, vulputate vel adipiscing sed, convallis ac justo. Phasellus pellentesque tempor leo, sit amet porttitor dolor ultrices non. Maecenas aliquet mattis nisl. Sed euismod urna sed est euismod viverra. Integer consectetur tortor id est ultricies venenatis. Nullam egestas dolor fringilla tellus aliquet fringilla eu ut nisl. Aenean vitae dolor odio, quis posuere enim. Etiam quam odio, sodales ut accumsan in, malesuada in nulla.
+  
+      Curabitur purus mauris, bibendum eget consectetur nec, feugiat non nisl. Duis vulputate rhoncus felis, nec ultricies felis vehicula eget. Aenean ullamcorper gravida ipsum sed ultrices. Praesent consectetur nulla eu nisi sagittis dapibus. Ut in ipsum in quam pellentesque tempus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin aliquet auctor posuere. Pellentesque vitae urna sit amet nunc semper interdum.
+  
+      Mauris nisl massa, ultrices eget molestie sit amet, dapibus non felis. Pellentesque adipiscing magna et nunc bibendum nec malesuada turpis sollicitudin. Fusce aliquet posuere interdum. Pellentesque vulputate tempor dignissim. Nulla facilisi. In auctor ligula mollis libero molestie mollis. Nam ut sodales felis. Suspendisse in vulputate dui. Integer lacinia ultrices dignissim. Nunc luctus bibendum eros quis tempus. Curabitur varius facilisis eleifend.
+    """
 
 }

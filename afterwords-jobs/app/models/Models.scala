@@ -8,6 +8,7 @@ import com.novus.salat.dao._
 import com.novus.salat.annotations._
 import Database.mongoDB
 
+
 //abstract class User(email: String, name: String, password: String)
 //case class Editor(email: String, name: String, password: String) extends User(email, name, password)
 //case class Customer(email: String, name: String, password: String) extends User(email, name, password)
@@ -21,16 +22,13 @@ case class Job(
   dueDate: Option[Date],
   assignedTo: Option[String],
   reviewedBy: Option[String],
-  originalDocument: Document/*,
-  versions: List[Version]*/)
+  originalDocument: Document,
+  versions: List[Version])
 
 case class Document(
   created: Date,
   createdBy: String,
-  text: String  ){
-
-//  lazy val versions: OneToMany[Version] = Database.documentToVersions.left(this)
-}
+  text: String  )
 
 case class Version(
   id: Long,
@@ -38,10 +36,7 @@ case class Version(
   created: Date,
   createdBy: String,
   versionNo: Int,
-  uri: String){
-
-//  lazy val document: ManyToOne[Document] = Database.documentToVersions.right(this)
-}
+  uri: String)
 
 case class Payment(
   id: Long,

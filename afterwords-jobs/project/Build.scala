@@ -8,7 +8,7 @@ object ApplicationBuild extends Build {
     val appVersion      = "0.1-SNAPSHOT"
 
     val appDependencies = Seq(
-      "org.scalatest" %% "scalatest" % "1.8" % "test",  
+      "org.scalatest" %% "scalatest" % "1.8" % "test",
       "org.mongodb" %% "casbah" % "2.5.0",
       "com.novus" %% "salat" % "1.9.1",
       "org.scalaj" %% "scalaj-collection" % "1.2",

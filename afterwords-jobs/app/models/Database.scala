@@ -7,10 +7,13 @@ import java.util.{Date, Locale}
 import java.text.DateFormat
 import java.text.DateFormat._
 import java.util.Random
+import play.Play
 
 object Database {
   val rand = new Random
   val df = new java.text.SimpleDateFormat("dd-MM-yyyy")
+  
+  lazy val configuration = Play.application.configuration.getConfig("mongodb")
   
   val mongoDB : MongoDB = Option(System.getenv("VCAP_SERVICES")) match {
       case Some(s) =>
@@ -27,8 +30,9 @@ object Database {
         println("Auth successful? " + success)
         mongodb
       case _ => 
-        println("Using localhost")
-        MongoConnection()("sampleapp")
+        println("Using localhost + config = " + configuration.getString("default.db"))
+        
+        MongoConnection()(configuration.getString("default.db"))
   }
   
   def createUniqueSlug(text: String) : String = text + df.format(new Date) + rand.nextLong
