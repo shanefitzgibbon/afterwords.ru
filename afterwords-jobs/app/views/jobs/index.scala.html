@@ -1,4 +1,4 @@
-@(jobs: Seq[models.Job])
+@(jobs: com.novus.salat.dao.SalatMongoCursor[models.Job])
 <h1>Jobs</h1>
 <ul>
 @for(job <- jobs) {

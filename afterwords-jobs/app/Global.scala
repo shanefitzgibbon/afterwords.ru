@@ -1,11 +1,4 @@
 import play.api.{ Application, GlobalSettings }
-import models.Database
-import models.Job
-import models.Document
-import models.Version
-import models.Payment
-import org.bson.types.ObjectId
-import models.Version$
 
 object Global extends GlobalSettings {
   override def onStart(app: Application) {
@@ -17,22 +10,51 @@ object Global extends GlobalSettings {
 
 object InitialData {
 
+  import models._
+  import org.bson.types.ObjectId
+
   def date(str: String) = new java.text.SimpleDateFormat("yyyy-MM-dd").parse(str)
 
   def insert() = {
     println(Job.findAll.mkString)
     if (Job.findAll.isEmpty) {
+      //Test Customer
+      val testCustomer = new Customer(email="cust1@test.com", name="Test User", password="password", paymentMethods=List.empty[PaymentMethod])
+      
       //Test Jobs
       Seq(
-        Job(new ObjectId, date("2013-01-31"), "cust1@test.com", false, Some(date("2013-02-01")), None, None, 
-            Document(date("2013-01-31"), "cust1@test.com", "Text for document 1"), 
-            Version(1, 1, date("2013-01-31"), "cust1@test.com", 0, "http://cloud.net/doc/5646846454684654654684684684eteat684684") :: Nil),
-        Job(new ObjectId, date("2013-02-05"), "cust2@test.com", false, Some(date("2013-02-06")), None, None, 
-            Document(date("2013-01-31"), "cust1@test.com", "Text for document 2"), List.empty[models.Version]),
-        Job(new ObjectId, date("2013-02-10"), "cust3@test.com", false, Some(date("2013-02-11")), None, None, 
-            Document(date("2013-01-31"), "cust1@test.com", "Text for document 3"), List.empty[models.Version]),
-        Job(new ObjectId, date("2013-02-07"), "cust1@test.com", false, Some(date("2013-02-08")), None, None, 
-            Document(date("2013-01-31"), "cust1@test.com", "Text for document 4"), List.empty[models.Version])
+        Job(created=date("2013-01-31"), 
+            createdBy="cust1@test.com", 
+            completed=false, 
+            dueDate=Some(date("2013-02-01")), 
+            assignedTo=None, 
+            reviewedBy=None, 
+            originalDocument=Document(date("2013-01-31"), "cust1@test.com", "Text for document 1"), 
+            versions=Version(1, 1, date("2013-01-31"), "cust1@test.com", 0, "http://cloud.net/doc/5646846454684654654684684684eteat684684") :: Nil),
+        Job(created=date("2013-02-05"), 
+            createdBy="cust2@test.com", 
+            completed=false, 
+            dueDate=Some(date("2013-02-06")), 
+            assignedTo=None, 
+            reviewedBy=None, 
+            originalDocument=Document(date("2013-01-31"), "cust1@test.com", "Text for document 2"), 
+            versions=List.empty[models.Version]),
+        Job(created=date("2013-02-10"), 
+            createdBy="cust3@test.com", 
+            completed=false, 
+            dueDate=Some(date("2013-02-11")), 
+            assignedTo=None, 
+            reviewedBy=None, 
+            originalDocument=Document(date("2013-01-31"), "cust1@test.com", "Text for document 3"), 
+            versions=List.empty[models.Version]),
+        Job(created=date("2013-02-07"), 
+            createdBy="cust1@test.com", 
+            completed=false, 
+            dueDate=Some(date("2013-02-08")), 
+            assignedTo=None, 
+            reviewedBy=None, 
+            originalDocument=Document(date("2013-01-31"), "cust1@test.com", "Text for document 4"), 
+            versions=List.empty[models.Version])
       ).foreach(Job.insert)
 //
 //      //Test Versions

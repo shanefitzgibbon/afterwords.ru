@@ -8,11 +8,12 @@ import com.novus.salat.dao._
 import com.novus.salat.annotations._
 import Database.mongoDB
 
+abstract class User(email: String, name: String, password: String)
+case class Administrator(email: String, name: String, password: String) extends User(email, name, password)
+case class Editor(email: String, name: String, password: String) extends User(email, name, password)
+case class Customer(email: String, name: String, password: String, paymentMethods: List[PaymentMethod]) extends User(email, name, password)
 
-//abstract class User(email: String, name: String, password: String)
-//case class Editor(email: String, name: String, password: String) extends User(email, name, password)
-//case class Customer(email: String, name: String, password: String) extends User(email, name, password)
-//case class Administrator(email: String, name: String, password: String) extends User(email, name, password)
+case class PaymentMethod(name: String, lastFour: Int, cryptedNumber: String, expirationDate: Date)
 
 case class Job(
   @Key("_id") id: ObjectId = new ObjectId,
@@ -28,7 +29,7 @@ case class Job(
 case class Document(
   created: Date,
   createdBy: String,
-  text: String  )
+  text: String)
 
 case class Version(
   id: Long,
@@ -47,20 +48,27 @@ case class Payment(
   paymentDate: Option[Date],
   paymentRef: Option[String])
 
-object Job extends ModelCompanion[Job, ObjectId]{
+object Job extends ModelCompanion[Job, ObjectId] {
 
   val jobsCollection = mongoDB("jobs")
-  
+
   val dao = new SalatDAO[Job, ObjectId](collection = jobsCollection) {}
-  
-//  def insert(job: Job) = insert(job, WriteConcern.Safe)
-  
+
+  //  def insert(job: Job) = insert(job, WriteConcern.Safe)
+
   ///Queries
-  
+
 }
 
-object Document {
+object Customer extends ModelCompanion[Customer, ObjectId] {
   
+  val customersCollection = mongoDB("customers")
+  
+  val dao = new SalatDAO[Customer, ObjectId](collection = customersCollection){}
+} 
+
+object Document {
+
   def findById(id: Long): Document = null
 
   /**
@@ -69,23 +77,6 @@ object Document {
   def insert(document: Document) = null
 }
 
-object Version {
-  /**
-   * Adds a version to document
-   */
-  def addVersion(version: Version, document: Document) = null
-  
-  /**
-   * Insert a version
-   */
-  def insert(version: Version) = null
-}
 
-object Payment {
-  /**
-   * Insert a payment
-   */
-  def insert(payment: Payment) = null
-}
 
 

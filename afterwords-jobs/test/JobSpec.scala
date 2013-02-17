@@ -22,17 +22,11 @@ class JobSpec extends Specification {
       }
   }
   
-  
   "A Job" should {
-    
-//    doFirst {
-//      //setup database
-//    }
     
     "be insertable into the jobs table" in {
       running(FakeApplication(additionalConfiguration = mongoTestDatabase())) {
         val testJob = Job(
-          id=new ObjectId, 
           created=date("2013-01-31"),
           createdBy="jobspectest",
           completed=false,
