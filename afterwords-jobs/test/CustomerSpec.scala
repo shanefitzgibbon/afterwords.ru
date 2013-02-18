@@ -18,7 +18,7 @@ class CustomerSpec extends Specification {
   
   step {
       running(FakeApplication(additionalConfiguration = mongoTestDatabase())) {
-        Job.remove(MongoDBObject.empty)
+        Customer.remove(MongoDBObject.empty)
       }
   }
   

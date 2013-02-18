@@ -8,10 +8,14 @@ import com.novus.salat.dao._
 import com.novus.salat.annotations._
 import Database.mongoDB
 
-abstract class User(email: String, name: String, password: String)
-case class Administrator(email: String, name: String, password: String) extends User(email, name, password)
-case class Editor(email: String, name: String, password: String) extends User(email, name, password)
-case class Customer(email: String, name: String, password: String, paymentMethods: List[PaymentMethod]) extends User(email, name, password)
+abstract class User{
+  val email: String
+  val name: String
+  val password: String
+}
+case class Administrator(email: String, name: String, password: String) extends User
+case class Editor(email: String, name: String, password: String) extends User
+case class Customer(email: String, name: String, password: String, paymentMethods: List[PaymentMethod] = List.empty[PaymentMethod]) extends User
 
 case class PaymentMethod(name: String, lastFour: Int, cryptedNumber: String, expirationDate: Date)
 
@@ -21,10 +25,10 @@ case class Job(
   createdBy: String,
   completed: Boolean,
   dueDate: Option[Date],
-  assignedTo: Option[String],
-  reviewedBy: Option[String],
+  assignedTo: Option[String] = None,
+  reviewedBy: Option[String] = None,
   originalDocument: Document,
-  versions: List[Version])
+  versions: List[Version] = List.empty[Version])
 
 case class Document(
   created: Date,
@@ -54,7 +58,17 @@ object Job extends ModelCompanion[Job, ObjectId] {
 
   val dao = new SalatDAO[Job, ObjectId](collection = jobsCollection) {}
 
-  //  def insert(job: Job) = insert(job, WriteConcern.Safe)
+  def create(documentText: String)(implicit user: User) = {
+    val newDocument = Document(created=new Date, createdBy=user.email, text=documentText)
+    val newJob = Job(
+        created=new Date,
+        createdBy=user.email,
+        completed=false,
+        dueDate=None, //should calculate +2 business days here
+        originalDocument = newDocument
+    )
+    insert(newJob)
+  }
 
   ///Queries
 

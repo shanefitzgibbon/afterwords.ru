@@ -46,11 +46,20 @@ class JobSpec extends Specification {
       }
     }
     
-    "on creation, create a document version and associate it with the job" in { pending }  
-    
-    "on creation, populate the created field with the current date and time" in { pending }
-    
-    "on creation, populate the 'created by' with the current user" in { pending }
+    "on creation, create a document version and associate it with the job" in {
+      running(FakeApplication(additionalConfiguration = mongoTestDatabase())) {
+        val testCustomer = Customer("jobspec_test@email.com", "JobSpecTest", "password")
+        val createdJobId = Job.create(testText)(testCustomer)
+        createdJobId should not be (None)
+        val foundJob = Job.findOneById(createdJobId.get)
+        foundJob should not be (none)
+        foundJob.get.created should not be null
+        foundJob.get.createdBy must beEqualTo("jobspec_test@email.com") 
+        foundJob.get.originalDocument.text must be equalTo(testText)
+        foundJob.get.originalDocument.created must not be null
+        foundJob.get.originalDocument.createdBy must be equalTo("jobspec_test@email.com")
+      }
+    }  
     
     "on creation, initialise a payment process" in { pending }
     
