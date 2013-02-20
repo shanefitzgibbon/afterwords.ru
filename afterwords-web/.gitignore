@@ -4,9 +4,6 @@
 # or operating system, you probably want to add a global ignore instead:
 # git config --global core.excludesfile ~/.gitignore_global
 
-# Ignore bundler config
-/.bundle
-
 # Ignore the build directory
 /build
 
@@ -15,3 +12,11 @@
 
 # Ignore Idea IDE settings
 /.idea
+
+# Project specific #
+####################
+/build/*
+/tmp/*
+/temp/*
+/dist/*
+components
