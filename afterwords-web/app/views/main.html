@@ -9,35 +9,25 @@
 
         <div id="new-job-steps" class="row">
             <div class="span4">
-                <p>Step 1 <i class="icon-arrow-down"></i></p>
+                <p><span id="step1">1.</span> <small>Copy and paste your text here</small>
+                    <i class="icon-arrow-down"></i></p>
             </div>
             <div class="span4">
-                <p>Step 2</p>
+                <p><span id="step2">2.</span> <small>Find out the cost and pay online</small></p>
             </div>
             <div class="span4">
-                <p>Step 3</p>
+                <p><span id="step3">3.</span> <small>Get the text to your e-mail address</small></p>
             </div>
         </div>
 
-        <div class="row">
-            <div class="span12">
-                <textarea class="span12" rows="10"></textarea>
-            </div>
+        <div ng-switch on="process.currentStep">
+            <div ng-switch-when="step1"><div ng-include src="'views/step1.html'"></div></div>
+            <div ng-switch-when="step2"><div ng-include src="'views/step2.html'"></div></div>
+            <div ng-switch-when="step3"><div ng-include src="'views/step3.html'"></div></div>
+            <div ng-switch-default><div ng-include src="'views/step1.html'"></div></div>
         </div>
 
-        <div class="row">
-            <div class="span12">
-                <button class="btn-primary">Continue</button><span> or </span>
-                <button class="btn-warning">Cancel</button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="span12">
-                <label class="checkbox">
-                    <input type="checkbox" value="">
-                    I agree to the <a href="#">Terms and Conditions</a>
-                </label>
-            </div>
-        </div>
+
+
     </div>
 </div>

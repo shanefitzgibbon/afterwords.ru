@@ -1,0 +1,15 @@
+<span>Step 3</span>
+<div class="row">
+    <div class="span12">
+        <label class="checkbox">
+            <input type="checkbox" ng-model="awdoc.agreeTerms">
+            I agree to the <a href="#">Terms and Conditions</a>
+        </label>
+    </div>
+</div>
+<div class="row">
+    <div class="span12">
+        <button id="cancel" ng-class="{btn-warning: awdoc.agreeTerms == true}"
+                ng-disabled="!awdoc.agreeTerms" ng-click="process.cancel()">Cancel</button>
+    </div>
+</div>

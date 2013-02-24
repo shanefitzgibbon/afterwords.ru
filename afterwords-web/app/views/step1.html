@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="span12">
+        <textarea name="aw-document-text" class="span12" rows="10" ng-model="awdoc.text"></textarea>
+    </div>
+</div>
+
+<div class="row">
+    <div class="span2 offset10">Word count: <span id="word-count-value">{{awdoc.wordCount()}}</span> </div>
+</div>
+<div class="row">
+    <div class="span12">
+        <label class="checkbox">
+            <input type="checkbox" ng-model="awdoc.agreeTerms">
+            I agree to the <a href="#">Terms and Conditions</a>
+        </label>
+    </div>
+</div>
+<div class="row">
+    <div class="span12">
+        <button id="continue" ng-class="{btn-primary: awdoc.agreeTerms == true}"
+                ng-disabled="!awdoc.agreeTerms" ng-click="process.currentStep = 'step2'">Continue</button>
+        <span> or </span>
+        <button id="cancel" ng-class="{btn-warning: awdoc.agreeTerms == true}"
+                ng-disabled="!awdoc.agreeTerms" ng-click="process.cancel()")>Cancel</button>
+    </div>
+</div>

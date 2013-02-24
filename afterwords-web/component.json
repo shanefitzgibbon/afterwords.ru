@@ -1,0 +1,13 @@
+{
+  "author": "Shane Fitzgibbon",
+  "name": "afterwords-web",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "~1.0.5",
+    "angular-mocks": "~1.0.5",
+    "angular-ui": "~0.4.0",
+    "angular-resource": "~1.0.5",
+    "font-awesome": "~3.0.2",
+    "i18next": "~1.6.0"
+  }
+}

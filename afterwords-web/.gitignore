@@ -20,3 +20,4 @@
 /temp/*
 /dist/*
 components
+node_modules
