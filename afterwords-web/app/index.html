@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="components/font-awesome/css/font-awesome.css">
 
     </head>
-    <body ng-app="afterwords">
+    <body ng-app="afterwords" ng-cloak class="ng-cloak" ng-controller="RootCtrl">
 
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
@@ -26,52 +26,23 @@
 
         <!-- Add your site or application content here -->
         <div class="container">
-            <div class="row">
-                <div class="page-header">
-                    <h1>AfterWords</h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="span3 offset9">
-                    <a class="btn" style="float: right">Sign in</a>
-                    <a class="btn" style="float: right">Register</a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="span2 offset10">
-                    <p>
-                        Sign in via <i class="icon-facebook-sign" style="font-size: 16px;"></i>
-                        <i class="icon-twitter-sign" style="font-size: 16px;"></i>
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="navbar">
-                    <div class="navbar-inner">
-                        <ul class="nav">
-                            <li class="active"><a href="#">Home</a></li>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">FAQ</a></li>
-                            <li><a href="#">Editors</a></li>
-                            <li><a href="#">Prices</a></li>
-                            <li><a href="#">Contacts</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <div ng-include src="'header.html'"></div>
             <div ng-view></div>
             <div id="footer">
 
             </div>
         </div>
 
+        <script src="components/jquery/jquery.js"></script>
         <script src="components/angular/angular.js"></script>
         <script src="scripts/vendor/ui-bootstrap-tpls-0.1.0.js"></script>
+        <script src="components/i18next/release/i18next-1.6.0.js"></script>
         <script src="components/angular-placeholders/src/img/img.js"></script>
         <script src="components/angular-placeholders/src/txt/txt.js"></script>
 
         <!-- build:js scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/root.js"></script>
         <script src="scripts/controllers/main.js"></script>
 
         <!-- endbuild -->

@@ -1,0 +1,18 @@
+{
+  "login": {
+    "register" : "ЗАРЕГИСТРИРОВАТЬСЯ",
+    "sign-in" : "ВОЙТИ",
+    "sign-in-via" : "ВОЙТИ через"
+  },
+  "nav": {
+    "home" : "Главная",
+    "about-us" : "О нас",
+    "faq" : "FAQ",
+    "editors" : "Редакторы",
+    "prices" : "Цены",
+    "contacts" : "Контакты"
+  },
+  "main" : {
+    "heading" : "Editing your text is now very easy"
+  }
+}

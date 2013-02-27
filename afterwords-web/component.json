@@ -9,6 +9,8 @@
     "angular-resource": "~1.0.5",
     "font-awesome": "~3.0.2",
     "i18next": "~1.6.0",
-    "angular-placeholders": "latest"
+    "angular-placeholders": "latest",
+    "jquery": "~1.9.1",
+    "angular-cookies": "~1.0.5"
   }
 }

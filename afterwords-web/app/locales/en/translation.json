@@ -1,0 +1,18 @@
+{
+  "login": {
+    "register" : "Register",
+    "sign-in" : "Sign in",
+    "sign-in-via" : "Sign in via"
+  },
+  "nav": {
+    "home" : "Home",
+    "about-us" : "About Us",
+    "faq" : "FAQ",
+    "editors" : "Editors",
+    "prices" : "Prices",
+    "contacts" : "Contacts"
+  },
+  "main" : {
+    "heading" : "Editing your text is now very easy"
+  }
+}
