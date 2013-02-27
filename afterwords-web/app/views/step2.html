@@ -1,18 +1,35 @@
-<span>Step 2</span>
-<div class="row">
-    <div class="span12">
-        <label class="checkbox">
-            <input type="checkbox" ng-model="awdoc.agreeTerms">
-            I agree to the <a href="#">Terms and Conditions</a>
-        </label>
+<div id="demo-step-2">
+    <div class="row">
+        <div id="cost" class="span6">
+            <h3>Your order - <span>{{awdoc.wordCount()}}</span> words</h3>
+            <h2>The cost of <span>{{awdoc.cost()}}</span> rubles</h2>
+            <p><input type="checkbox" ng-model="process.addParsingErrors"/> Add parsing errors - 700 p</p>
+            <p>(Analysis of mistakes - is a detailed error analysis - grammatical, stylistic and spelling, you could
+            make in your text. You will receive a detailed description of the explanation as to why certain parts of
+            your text should be corrected)</p>
+        </div>
+        <div id="payment-options" class="span6">
+            <h2>How to pay.</h2>
+
+            <img ph-img="60x60" /><p>Via kiwi-purse, or in any payment kiosk.</p>
+
+        </div>
     </div>
+    <!--<div class="row">-->
+        <!--<accordion close-others="true">-->
+            <!--<accordion-group heading="Original Document">-->
+                <!--<div id="demo-original-text" class="well">{{awdoc.text}}</div>-->
+            <!--</accordion-group>-->
+        <!--</accordion>-->
+    <!--</div>-->
+
 </div>
 <div class="row">
     <div class="span12">
-        <button id="continue" ng-class="{btn-primary: awdoc.agreeTerms == true}"
-                ng-disabled="!awdoc.agreeTerms" ng-click="process.currentStep = 'step3'">Continue</button>
+        <button id="continue" ng-class="{'btn-primary': awdoc.agreeTerms == true}"
+                ng-disabled="!awdoc.agreeTerms" ng-click="process.currentStep = 'step3'">Confirm Order</button>
         <span> or </span>
-        <button id="cancel" ng-class="{btn-warning: awdoc.agreeTerms == true}"
+        <button id="cancel" ng-class="{'btn-warning': awdoc.agreeTerms == true}"
                 ng-disabled="!awdoc.agreeTerms" ng-click="process.cancel()">Cancel</button>
     </div>
 </div>

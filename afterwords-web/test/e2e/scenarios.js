@@ -37,7 +37,11 @@ describe('afterwords app', function() {
 
     it('should transition to the "step 2 panel" when the continue button is pressed', function(){
       browser().navigateTo('index.html');
-      input('#continue').click();
+      input('awdoc.text').enter('Here is some test text.');
+      input('awdoc.agreeTerms').check();
+      element('#continue').click();
+      expect(element('#demo-step-2').count()).toBe(1)
+      expect(element('#demo-original-text').text()).toBe('Here is some test text.');
     });
   });
 

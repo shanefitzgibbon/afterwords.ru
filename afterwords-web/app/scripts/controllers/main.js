@@ -2,6 +2,9 @@
 
 afterwords.controller('MainCtrl', function($scope) {
   function Document(){
+    //private vars
+    var wordsPerPage = 300;
+    var costPerPage = 200;
     //public vars
     this.text = ''
     this.agreeTerms = false;
@@ -12,14 +15,23 @@ afterwords.controller('MainCtrl', function($scope) {
       var count = this.text.trim().replace(regex, ' ').split(' ').length;
       return count
     }
+    this.pageCount = function(){
+      return Math.ceil(this.wordCount() / wordsPerPage);
+    }
+    this.cost = function(){
+      return this.pageCount() * costPerPage;
+    }
+
   }
   $scope.awdoc = new Document();
   function Process(){
     //public vars
-    this.currentStep = 'step1'
+    this.currentStep = 'step1';
+    this.addParsingErrors = false;
     //public functions
     this.cancel = function(){
-      this.currentStep ='step1'
+      this.currentStep = 'step1';
+      this.addParsingErrors = false;
     }
   }
   $scope.process = new Process();

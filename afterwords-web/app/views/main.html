@@ -7,19 +7,6 @@
                 native speakers - 200 rubles per page, within 24 hours</p>
         </div>
 
-        <div id="new-job-steps" class="row">
-            <div class="span4">
-                <p><span id="step1">1.</span> <small>Copy and paste your text here</small>
-                    <i class="icon-arrow-down"></i></p>
-            </div>
-            <div class="span4">
-                <p><span id="step2">2.</span> <small>Find out the cost and pay online</small></p>
-            </div>
-            <div class="span4">
-                <p><span id="step3">3.</span> <small>Get the text to your e-mail address</small></p>
-            </div>
-        </div>
-
         <div ng-switch on="process.currentStep">
             <div ng-switch-when="step1"><div ng-include src="'views/step1.html'"></div></div>
             <div ng-switch-when="step2"><div ng-include src="'views/step2.html'"></div></div>
