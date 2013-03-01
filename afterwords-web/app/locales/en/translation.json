@@ -13,6 +13,35 @@
     "contacts" : "Contacts"
   },
   "main" : {
-    "heading" : "Editing your text is now very easy"
+    "heading" : "Editing your text is now very easy",
+    "description" : "Just 3 steps and your text will be brought to perfection by professional editors = native speakers - 200 rubles per page, within 24 hours",
+    "confirm-order" : "Confirm Order",
+    "cancel" : "Cancel",
+    "continue" : "Continue",
+    "step1" : {
+      "copy-paste" : "Copy and paste your text here",
+      "find-out-cost" : "Find out the cost and pay online",
+      "get-email" : "Get the text sent to your e-mail address",
+      "word-count" : "Word count:",
+      "i-agree" : "I agree to the",
+      "terms-and-conditions" : "Terms and Conditions"
+    },
+    "step2" : {
+      "your-order" : "Your order",
+      "words" : "words",
+      "cost" : "Cost ",
+      "rubles" : "rubles",
+      "errors-option" : "Add parsing errors - 700 p",
+      "errors-description" : "(Analysis of mistakes - is a detailed error analysis - grammatical, stylistic and spelling, you could make in your text. You will receive a detailed description of the explanation as to why certain parts of your text should be corrected)",
+      "how-to-pay" : "How to pay.",
+      "pay-by-kiwi" : "Via kiwi-purse, or in any payment kiosk.",
+      "confirm-order" : "Confirm Order",
+      "cancel" : "Cancel"
+    },
+    "step3" : {
+      "thank-you" : "Thanks for your order!",
+      "information" : "The edited text will be emailed to you within 24 hours.",
+      "feedback" : "We also would appreciate your feedback and comments"
+    }
   }
 }

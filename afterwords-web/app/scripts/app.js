@@ -1,5 +1,7 @@
 'use strict';
 
+function valueFn(value) {return function() {return value;};}
+
 var afterwords = angular.module('afterwords', ['ui.bootstrap', 'placeholders.img'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
@@ -42,4 +44,5 @@ var afterwords = angular.module('afterwords', ['ui.bootstrap', 'placeholders.img
         iElement.i18n();
       }
     }
-  });
+  })
+  .filter('i18n', valueFn(function(key, options) { return $.t(key, options);}));

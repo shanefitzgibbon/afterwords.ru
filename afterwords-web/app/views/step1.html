@@ -1,13 +1,13 @@
 <div id="new-job-steps" class="row">
     <div class="span4">
-        <p><span id="step1">1.</span> <small>Copy and paste your text here</small>
+        <p><span id="step1">1.</span> <small i18n="main.step1.copy-paste"></small>
             <i class="icon-arrow-down"></i></p>
     </div>
     <div class="span4">
-        <p><span id="step2">2.</span> <small>Find out the cost and pay online</small></p>
+        <p><span id="step2">2.</span> <small i18n="main.step1.find-out-cost"></small></p>
     </div>
     <div class="span4">
-        <p><span id="step3">3.</span> <small>Get the text to your e-mail address</small></p>
+        <p><span id="step3">3.</span> <small i18n="main.step1.get-email"></small></p>
     </div>
 </div>
 
@@ -18,22 +18,22 @@
 </div>
 
 <div class="row">
-    <div class="span2 offset10">Word count: <span id="word-count-value">{{awdoc.wordCount()}}</span> </div>
+    <div class="span2 offset10">{{'main.step1.word-count' | i18n}} <span id="word-count-value">{{awdoc.wordCount()}}</span> </div>
 </div>
 <div class="row">
     <div class="span12">
         <label class="checkbox">
             <input type="checkbox" ng-model="awdoc.agreeTerms">
-            I agree to the <a href="#">Terms and Conditions</a>
+          {{'main.step1.i-agree' | i18n}} <a href="#">{{'main.step1.terms-and-conditions' | i18n}}</a>
         </label>
     </div>
 </div>
 <div class="row">
     <div class="span12">
         <button id="continue" ng-class="{'btn-primary': awdoc.agreeTerms == true}"
-                ng-disabled="!awdoc.agreeTerms" ng-click="process.currentStep = 'step2'">Continue</button>
+                ng-disabled="!awdoc.agreeTerms" ng-click="process.currentStep = 'step2'" i18n="main.continue"></button>
         <span> or </span>
         <button id="cancel" ng-class="{'btn-warning': awdoc.agreeTerms == true}"
-                ng-disabled="!awdoc.agreeTerms" ng-click="process.cancel()")>Cancel</button>
+                ng-disabled="!awdoc.agreeTerms" ng-click="process.cancel()" i18n="main.cancel"></button>
     </div>
 </div>
