@@ -1,0 +1,107 @@
+HOST: http://api.afterwords.ru/
+
+--- Afterwords API v1 ---
+---
+The API for interacting with the afterwords text editing service.
+---
+
+--
+Job Resources
+The following is a section of resources related to edit jobs
+--
+List jobs associatate with the current user
+GET /jobs
+< 200
+< Content-Type: application/json
+{ "jobs": [
+    {
+        "id": "512197bf03649cb7d08c0e34",
+        "created": "2013-02-18T02:53:51.386Z",
+        "createdBy": "jobspec_test@email.com",
+        "completed": false,
+        "originalDocument": {
+            "created": "2013-02-18T02:53:51.386Z"),
+            "createdBy": "jobspec_test@email.com",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non accumsan dolor."
+        }
+    }
+    ] 
+}
+
+Save new text requiring editing by the afterwords team
+POST /jobs
+> Content-Type: application/json
+{ "text":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non accumsan dolor."}
+< 201
+< Content-Type: application/json
+{ "status": "created", "id": "512197bf03649cb7d08c0e34" }
+
+Get an individual job details
+GET /jobs/{id}
+< 200
+< Content-Type: application/json
+{
+    "id": "512197bf03649cb7d08c0e34",
+    "created": "2013-02-18T02:53:51.386Z",
+    "createdBy": "jobspec_test@email.com",
+    "completed": false,
+    "originalDocument": {
+        "created": "2013-02-18T02:53:51.386Z"),
+        "createdBy": "jobspec_test@email.com",
+        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non accumsan dolor."
+    }
+}
+
+Get all versions of a job text
+GET /jobs/{id}/versions
+< 200
+< Content-Type: application/json
+{
+    "id": "512197bf03649cb7d08c0e34",
+    "versions" : [
+        "original": {
+            "created": "2013-02-18T02:53:51.386Z"),
+            "createdBy": "jobspec_test@email.com",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non accumsan dolor."
+        },
+        "final": {
+            "created": "2013-02-18T02:53:51.386Z"),
+            "createdBy": "jobspec_test@email.com",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non accumsan dolor."
+        },
+        "v2": {
+            "created": "2013-02-18T02:53:51.386Z"),
+            "createdBy": "jobspec_test@email.com",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non accumsan dolor."
+        },
+        "v3": {
+            "created": "2013-02-18T02:53:51.386Z"),
+            "createdBy": "jobspec_test@email.com",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non accumsan dolor."
+        }
+    ]
+}
+
+Update the individual edit job if it exists
+PUT /jobs/{id}
+< 200
+< Content-Type: application/json
+{}
+    
+
+Delete an individual edit job -- 
+DELETE /jobs/{id}
+< 200
+
+-- User Resources --
+
+
+-- Editor Resources --
+
+
+-- Payment Resources --
+This resource allows you to submit payment information to process your *shopping cart* items
+POST /payments
+{ "cc": "12345678900", "cvc": "123", "expiry": "0112" }
+< 200
+{ "receipt": "/payments/receipts/1" }
