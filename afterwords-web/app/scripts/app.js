@@ -2,7 +2,7 @@
 
 function valueFn(value) {return function() {return value;};}
 
-var afterwords = angular.module('afterwords', ['ui.bootstrap', 'placeholders.img'])
+var afterwords = angular.module('afterwords', ['ngResource', 'ui.bootstrap', 'placeholders.img'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {
@@ -45,4 +45,9 @@ var afterwords = angular.module('afterwords', ['ui.bootstrap', 'placeholders.img
       }
     }
   })
-  .filter('i18n', valueFn(function(key, options) { return $.t(key, options);}));
+  .filter('i18n', valueFn(function(key, options) { return $.t(key, options);}))
+  .service('Job', function ($resource) {
+    return $resource('http://afterwords.local\\:9000/jobs/:jobId', {}, {
+      update: {method:'PUT'}
+    });
+  });

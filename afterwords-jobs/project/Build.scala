@@ -16,6 +16,7 @@ object ApplicationBuild extends Build {
     )
 
     val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings(
+      javacOptions in Compile ++= Seq("-version"),  
       resolvers ++= Seq(
           "SecureSocial Repository" at "http://securesocial.ws/repository/releases/",
           "sonatype" at "https://oss.sonatype.org/content/repositories/releases/")

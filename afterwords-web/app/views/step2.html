@@ -1,9 +1,9 @@
 <div id="demo-step-2">
   <div class="row">
     <div id="cost" class="span6">
-      <h3>{{'main.step2.your-order' | i18n}} - <span>{{awdoc.wordCount()}}</span> {{'main.step2.words' | i18n}}</h3>
+      <h3>{{'main.step2.your-order' | i18n}} - <span id="word_count">{{awdoc.wordCount()}}</span> {{'main.step2.words' | i18n}}</h3>
 
-      <h2>{{'main.step2.cost' | i18n}} <span>{{awdoc.cost()}}</span> {{'main.step2.rubles' | i18n}}</h2>
+      <h2>{{'main.step2.cost' | i18n}} <span id="quote_cost">{{awdoc.cost()}}</span> {{'main.step2.rubles' | i18n}}</h2>
 
       <p><input type="checkbox" ng-model="process.addParsingErrors" /> {{'main.step2.errors-option' | i18n}}</p>
 
@@ -28,7 +28,7 @@
 <div class="row">
   <div class="span12">
     <button id="continue" ng-class="{'btn-primary': awdoc.agreeTerms == true}"
-            ng-disabled="!awdoc.agreeTerms" ng-click="process.currentStep = 'step3'"
+            ng-disabled="!awdoc.agreeTerms" ng-click="awdoc.submit();process.currentStep = 'step3'"
             i18n="main.confirm-order">
     </button>
     <span> or </span>

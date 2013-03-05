@@ -1,6 +1,6 @@
 'use strict';
 
-afterwords.controller('MainCtrl', function($scope) {
+afterwords.controller('MainCtrl', function($scope, $resource) {
   function Document(){
     //private vars
     var wordsPerPage = 300;
@@ -20,6 +20,14 @@ afterwords.controller('MainCtrl', function($scope) {
     }
     this.cost = function(){
       return this.pageCount() * costPerPage;
+    }
+    this.submit = function(){
+      if (this.agreeTerms && this.wordCount() > 0){
+        var Job = $resource('http://localhost\\:9000/api/jobs/:jobId', {});
+        var newJob = new Job();
+        newJob.text = this.text;
+        newJob.$save();
+      }
     }
 
   }

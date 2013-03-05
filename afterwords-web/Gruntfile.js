@@ -164,6 +164,18 @@ module.exports = function( grunt ) {
       baseUrl: './scripts',
       wrap: true
     }
+//    ,
+//
+//    s3: {
+//      bucket: 'afterwords-test',
+//      access: 'public-read',
+//      upload: [
+//        {
+//          src: 'dist/',
+//          dest: '/'
+//        }
+//      ]
+//    }
   });
 
   // Alias the `test` task to run `testacular` instead
