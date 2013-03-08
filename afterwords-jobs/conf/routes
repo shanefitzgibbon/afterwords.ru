@@ -12,6 +12,9 @@ OPTIONS /api/*url								controllers.Application.checkPreFlight(url: String)
 GET     /jobs            			controllers.Jobs.index
 POST     /api/jobs            			controllers.Jobs.newJob
 
+# Users
+GET			/api/users/:email			controllers.Customers.find(email: String)
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -10,6 +10,8 @@ files = [
   JASMINE,
   JASMINE_ADAPTER,
   'app/components/angular/angular.js',
+  'app/components/angular-resource/angular-resource.js',
+  'app/components/angular-cookies/angular-cookies.js',
   'app/components/jquery/jquery.js',
   'app/components/i18next/release/i18next-1.6.0.js',
   'app/components/angular-placeholders/src/img/img.js',

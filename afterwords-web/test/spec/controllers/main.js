@@ -65,11 +65,11 @@ describe('Controller: MainCtrl', function() {
 
   it('should calculate the cost of a job with text < 300 words to cost 200 rubles', function () {
     scope.awdoc.text = "this is a very short text";
-    expect(scope.awdoc.cost()).toBe(200);
+    expect(scope.awdoc.cost()).toBe(250);
     scope.awdoc.text = testText599Words;
-    expect(scope.awdoc.cost()).toBe(400);
+    expect(scope.awdoc.cost()).toBe(500);
     scope.awdoc.text = testText601Words;
-    expect(scope.awdoc.cost()).toBe(600);
+    expect(scope.awdoc.cost()).toBe(750);
   });
 
 

@@ -4,3 +4,4 @@
 9998:service.InMemoryUserService
 9999:securesocial.core.providers.utils.BCryptPasswordHasher
 10004:securesocial.core.providers.UsernamePasswordProvider
+10005:service.BasicAuthIdentityProvider

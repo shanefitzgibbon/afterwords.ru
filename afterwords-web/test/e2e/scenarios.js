@@ -43,7 +43,7 @@ describe('afterwords app', function() {
       expect(element('span#word_count').count()).toBe(1)
       expect(element('span#word_count').text()).toBe('5')
       expect(element('span#quote_cost').count()).toBe(1)
-      expect(element('span#quote_cost').text()).toBe('200')
+      expect(element('span#quote_cost').text()).toBe('250')
 //      expect(element('#demo-original-text').text()).toBe('Here is some test text.');
     });
   });

@@ -27,6 +27,29 @@
         <!-- Add your site or application content here -->
         <div class="container">
             <div ng-include src="'header.html'"></div>
+            <div ng-hide="login.user">
+              <form action="" ng-submit="login.connect()">
+                <fieldset>
+                  <legend>Login</legend>
+                  <p><input ng-model="login.login" name="email" type="text" placeholder="Login" required/></p>
+
+                  <p><input ng-model="login.password" name="password" type="password" placeholder="Password" required/></p>
+
+                  <p>
+                    <button type="submit">Login</button>
+                  </p>
+                </fieldset>
+              </form>
+            </div>
+
+            <div ng-show="login.user">
+              <p>Welcome, {{login.user.name}}!</p>
+
+              <p>
+                <button ng-click="login.disconnect()">Logout</button>
+              </p>
+            </div>
+
             <div ng-view></div>
             <div id="footer">
 
@@ -36,7 +59,9 @@
         <script src="components/jquery/jquery.js"></script>
         <script src="components/angular/angular.js"></script>
         <script src="components/angular-resource/angular-resource.js"></script>
+        <script src="components/angular-cookies/angular-cookies.js"></script>
         <script src="scripts/vendor/ui-bootstrap-tpls-0.1.0.js"></script>
+        <script src="scripts/vendor/webtoolkit.base64.js"></script>
         <script src="components/i18next/release/i18next-1.6.0.js"></script>
         <script src="components/angular-placeholders/src/img/img.js"></script>
         <script src="components/angular-placeholders/src/txt/txt.js"></script>

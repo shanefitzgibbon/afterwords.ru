@@ -2,7 +2,7 @@
 
 function valueFn(value) {return function() {return value;};}
 
-var afterwords = angular.module('afterwords', ['ngResource', 'ui.bootstrap', 'placeholders.img'])
+var afterwords = angular.module('afterwords', ['ngResource', 'ngCookies', 'ui.bootstrap', 'placeholders.img'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {
@@ -50,4 +50,7 @@ var afterwords = angular.module('afterwords', ['ngResource', 'ui.bootstrap', 'pl
     return $resource('http://afterwords.local\\:9000/jobs/:jobId', {}, {
       update: {method:'PUT'}
     });
+  })
+  .config(function($httpProvider) {
+    $httpProvider.defaults.withCredentials = true;
   });

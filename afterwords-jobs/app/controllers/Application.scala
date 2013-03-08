@@ -12,9 +12,10 @@ object Application extends Controller {
   def checkPreFlight(url: String) = Action { request =>
     import CORSHeaderNames._
     Ok("").withHeaders(
-      ACCESS_CONTROL_ALLOW_ORIGIN -> "*",
+      ACCESS_CONTROL_ALLOW_ORIGIN -> "http://localhost:3501",
       ACCESS_CONTROL_ALLOW_METHODS -> "GET, POST, PUT, DELETE, OPTIONS",
-      ACCESS_CONTROL_ALLOW_HEADERS -> "Content-Type, X-Requested-With, Accept",
+      ACCESS_CONTROL_ALLOW_HEADERS -> "Content-Type, X-Requested-With, Accept, Authorization",
+      ACCESS_CONTROL_ALLOW_CREDENTIALS -> "true",
       // cache access control response for one day
       ACCESS_CONTROL_MAX_AGE -> (60 * 60 * 24).toString
     )

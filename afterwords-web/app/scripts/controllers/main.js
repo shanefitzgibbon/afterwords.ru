@@ -1,10 +1,10 @@
 'use strict';
 
-afterwords.controller('MainCtrl', function($scope, $resource) {
+afterwords.controller('MainCtrl', function($scope, $resource, $cookieStore) {
   function Document(){
     //private vars
     var wordsPerPage = 300;
-    var costPerPage = 200;
+    var costPerPage = 250;
     //public vars
     this.text = ''
     this.agreeTerms = false;
