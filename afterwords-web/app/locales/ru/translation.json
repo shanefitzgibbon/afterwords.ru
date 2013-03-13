@@ -1,8 +1,15 @@
 {
-  "login": {
+  "common" : {
+    "cancel" : "Отмена",
+    "email" :  "E-mail"
+  },
+  "login" : {
     "register" : "ЗАРЕГИСТРИРОВАТЬСЯ",
     "sign-in" : "ВОЙТИ",
-    "sign-in-via" : "ВОЙТИ через"
+    "sign-in-via" : "ВОЙТИ через",
+    "greeting" : "Здравствуйте",
+    "logout" : "Выход",
+    "password" : "Пароль"
   },
   "nav": {
     "home" : "Главная",

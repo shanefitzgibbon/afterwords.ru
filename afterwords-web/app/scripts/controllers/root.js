@@ -1,6 +1,6 @@
 'use strict';
 
-afterwords.controller('RootCtrl', function($scope, $window, $http){
+afterwords.controller('RootCtrl', function($scope, $window, $http, $dialog){
   $scope.updateLang = function(language) {
     $.i18n.setLng(language, function(){
 //      $scope.$apply();
@@ -8,25 +8,19 @@ afterwords.controller('RootCtrl', function($scope, $window, $http){
     });
   }
 
-  $scope.login = {};
-  $scope.login.user = null;
-
-  $scope.login.connect = function() {
-    var config = {"withCredentials": true};
-    $http.get('http://localhost:9000/api/users/' + $scope.login.login, config).success(function(data, status) {
-      // despite its name, this callback is triggered even in case of an error, so we have to take care
-      if (status < 200 || status >= 300)
-        return;
-      $scope.login.user = data;
-    });
+  $scope.openLoginDialog = function(){
+    var d = $dialog.dialog();
+    d.open('views/login.html', 'LoginCtrl');
   };
 
-  $scope.login.disconnect = function() {
-    $scope.login.user = null;
-  };
-
-  $scope.$watch('login.login + login.password', function() {
-    $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode($scope.login.login + ':' + $scope.login.password);
+  $scope.$on('event:auth-loginRequired', function() {
+    $scope.openLoginDialog();
   });
+
+  $scope.$on('event:auth-loginConfirmed', function() {
+
+  });
+
+
 });
 

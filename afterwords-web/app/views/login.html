@@ -1,24 +1,25 @@
-<div ng-controller="LoginCtrl">
-  <div ng-hide="login.user">
-    <form action="" ng-submit="login.connect()">
-      <fieldset>
-        <legend>Login</legend>
-        <p><input ng-model="login.login" name="email" type="text" placeholder="Login" required/></p>
+<div ng-hide="login.user">
+  <div class="modal-header">
+    <h1 i18n="login.sign-in"></h1>
+  </div>
+  <form id="login" action="" ng-submit="login.connect()">
+    <fieldset>
+      <!--<legend>Login</legend>-->
+      <div class="modal-body">
+        <!--must add a pattern attribute to the email field as AngularJS has a more strict pattern than chrome (not sure about other browsers-->
+        <p><label i18n="common.email"></label><input ng-model="login.email" name="email" type="email"
+                                                     pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$"
+                                                     placeholder="{{'common.email' | i18n}}" required/></p>
 
-        <p><input ng-model="login.password" name="password" type="password" placeholder="Password" required/></p>
-
+        <p><label i18n="login.password"></label><input ng-model="login.password" name="password" type="password"
+                                                       placeholder="{{'login.password' | i18n}}" required/></p>
+       </div>
+      <div class="modal-footer">
         <p>
-          <button type="submit">Login</button>
+          <button type="submit" class="btn btn-primary" i18n="login.sign-in"></button>
+          <a ng-click="login.cancel()" class="btn" i18n="common.cancel"></a>
         </p>
-      </fieldset>
-    </form>
-  </div>
-
-  <div ng-show="login.user">
-    <p>Welcome, {{login.user.userName}}!</p>
-
-    <p>
-      <button ng-click="login.disconnect()">Logout</button>
-    </p>
-  </div>
+      </div>
+    </fieldset>
+  </form>
 </div>

@@ -1,5 +1,6 @@
 package service
 
+import controllers.CORSHeaderNames._
 import play.api.mvc._
 import play.api.http.HeaderNames
 import scala.Left
@@ -70,8 +71,9 @@ trait JsonAuthentication {
             }
           }
         }.getOrElse {
-          val authenticate = (HeaderNames.WWW_AUTHENTICATE, "Basic")
-          Unauthorized.withHeaders(authenticate)
+          Unauthorized.withHeaders(HeaderNames.WWW_AUTHENTICATE -> "Basic",
+          ACCESS_CONTROL_ALLOW_ORIGIN -> "http://localhost:3501",
+          ACCESS_CONTROL_ALLOW_CREDENTIALS -> "true")
         }
     }
   }

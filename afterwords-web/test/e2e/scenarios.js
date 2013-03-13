@@ -40,12 +40,42 @@ describe('afterwords app', function() {
       input('awdoc.text').enter('Here is some test text.');
       input('awdoc.agreeTerms').check();
       element('#continue').click();
-      expect(element('span#word_count').count()).toBe(1)
-      expect(element('span#word_count').text()).toBe('5')
-      expect(element('span#quote_cost').count()).toBe(1)
-      expect(element('span#quote_cost').text()).toBe('250')
+      expect(element('span#word_count').count()).toBe(1);
+      expect(element('span#word_count').text()).toBe('5');
+      expect(element('span#quote_cost').count()).toBe(1);
+      expect(element('span#quote_cost').text()).toBe('250');
 //      expect(element('#demo-original-text').text()).toBe('Here is some test text.');
     });
+
+    it('should update the cost when the "Add analysis of mistakes" option is selected', function(){
+      browser().navigateTo('index.html');
+      input('awdoc.text').enter('Here is some test text.');
+      input('awdoc.agreeTerms').check();
+      element('#continue').click();
+      expect(element('span#quote_cost').text()).toBe('250');
+      input('awdoc.includeAnalysis').check();
+      expect(element('span#quote_cost').text()).toBe('950');
+    });
+
+    describe('when there is NOT a logged in user', function(){
+      iit('should display the login form when the "Confirm Order" button is clicked', function(){
+        browser().navigateTo('index.html');
+        expect(element('.nav a#sign_in').text()).toBe('Sign in');
+        input('awdoc.text').enter('Here is some test text.');
+        input('awdoc.agreeTerms').check();
+        element('#continue').click();
+        expect(element('span#quote_cost').text()).toBe('250');
+        element('#continue').click();
+        pause();
+        expect(element('form#login').count()).toBe(1);
+      });
+    });
+
+    describe('when there IS a logged in user', function() {
+
+    });
+
+
   });
 
 });

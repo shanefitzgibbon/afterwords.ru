@@ -2,7 +2,7 @@
 
 function valueFn(value) {return function() {return value;};}
 
-var afterwords = angular.module('afterwords', ['ngResource', 'ngCookies', 'ui.bootstrap', 'placeholders.img'])
+var afterwords = angular.module('afterwords', ['http-auth-interceptor', 'ngResource', 'ngCookies', 'ui.bootstrap', 'placeholders.img'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {
@@ -51,6 +51,13 @@ var afterwords = angular.module('afterwords', ['ngResource', 'ngCookies', 'ui.bo
       update: {method:'PUT'}
     });
   })
+  .config(function($locationProvider) {
+    $locationProvider.html5Mode(true);
+  })
   .config(function($httpProvider) {
     $httpProvider.defaults.withCredentials = true;
+  })
+  .config(function($dialogProvider){
+    $dialogProvider.options({dialogFade: true, backdropFade: true})
   });
+

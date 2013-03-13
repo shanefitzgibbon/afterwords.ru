@@ -11,6 +11,7 @@
     "i18next": "~1.6.0",
     "angular-placeholders": "latest",
     "jquery": "~1.9.1",
-    "angular-cookies": "~1.0.5"
+    "angular-cookies": "~1.0.5",
+    "angular-http-auth": "latest"
   }
 }

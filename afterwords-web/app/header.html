@@ -7,32 +7,25 @@
         <h1>AfterWords <small>Editing and coaching for your English writing</small></h1>
     </div>
 </div>
-<div class="row">
-    <div class="span4 pull-right">
-        <p class="pull-right">
-            <a class="btn" i18n="login.sign-in"></a>
-            <a class="btn" i18n="login.register"></a>
-        </p>
-    </div>
-</div>
-<div class="row">
-    <div class="pull-right">
-        <p>
-            <span i18n="login.sign-in-via"></span> <i class="icon-facebook-sign" style="font-size: 20px;"></i>
-            <i class="icon-twitter-sign" style="font-size: 20px;"></i>
-        </p>
-    </div>
-</div>
+
 <div class="row">
     <div class="navbar">
         <div class="navbar-inner">
             <ul class="nav">
-                <li class="active"><a href="#/" i18n="nav.home"></a></li>
-                <li><a href="#/about-us" i18n="nav.about-us"></a></li>
-                <li><a href="#/faq" i18n="nav.faq"></a></li>
-                <li><a href="#/editors" i18n="nav.editors"></a></li>
-                <li><a href="#/prices" i18n="nav.prices"></a></li>
-                <li><a href="#/contacts" i18n="nav.contacts"></a></li>
+                <li class="active"><a href="/" i18n="nav.home"></a></li>
+                <li><a href="/about-us" i18n="nav.about-us"></a></li>
+                <li><a href="/faq" i18n="nav.faq"></a></li>
+                <li><a href="/editors" i18n="nav.editors"></a></li>
+                <li><a href="/prices" i18n="nav.prices"></a></li>
+                <li><a href="/contacts" i18n="nav.contacts"></a></li>
+            </ul>
+            <ul class="nav pull-right" ng-hide="login.user">
+              <li><a id="sign_in" ng-click="openLoginDialog()" i18n="login.sign-in"></a></li>
+              <li><a id="register" i18n="login.register"></a></li>
+            </ul>
+            <ul class="nav pull-right" ng-show="login.user">
+              <li><a id="greeting">{{'login.greeting' | i18n}}, {{login.user.name}}</a></li>
+              <li><a id="logout" ng-click="login.disconnect()">{{'login.logout' | i18n}}</a></li>
             </ul>
         </div>
     </div>

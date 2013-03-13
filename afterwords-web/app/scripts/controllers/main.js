@@ -1,13 +1,16 @@
 'use strict';
 
-afterwords.controller('MainCtrl', function($scope, $resource, $cookieStore) {
+afterwords.controller('MainCtrl', function($scope, $resource, jobService, $location, $log) {
   function Document(){
     //private vars
     var wordsPerPage = 300;
     var costPerPage = 250;
+    var costIncludeAnalysis = 700;
     //public vars
-    this.text = ''
+    this.text = '';
     this.agreeTerms = false;
+    this.includeAnalysis = false;
+    this.serverId = '';
     //public functions
     this.wordCount = function(){
       if (this.text == undefined || this.text.length == 0) return 0;
@@ -19,14 +22,17 @@ afterwords.controller('MainCtrl', function($scope, $resource, $cookieStore) {
       return Math.ceil(this.wordCount() / wordsPerPage);
     }
     this.cost = function(){
-      return this.pageCount() * costPerPage;
+      var documentCost = this.pageCount() * costPerPage;
+      var additionalCosts = this.includeAnalysis ? costIncludeAnalysis : 0;
+      return documentCost + additionalCosts;
     }
     this.submit = function(){
       if (this.agreeTerms && this.wordCount() > 0){
-        var Job = $resource('http://localhost\\:9000/api/jobs/:jobId', {});
-        var newJob = new Job();
-        newJob.text = this.text;
-        newJob.$save();
+        jobService.submitJob(this.text, function(createdJob){
+          $log.info('job service returned: ' + createdJob.id);
+          $scope.awdoc.serverId = createdJob.id;
+          $scope.process.currentStep = 'step3'
+        });
       }
     }
 
@@ -35,12 +41,17 @@ afterwords.controller('MainCtrl', function($scope, $resource, $cookieStore) {
   function Process(){
     //public vars
     this.currentStep = 'step1';
-    this.addParsingErrors = false;
+
     //public functions
     this.cancel = function(){
       this.currentStep = 'step1';
-      this.addParsingErrors = false;
+
     }
   }
   $scope.process = new Process();
+
+//  $scope.$watch('process.currentStep', function(step){
+//    $location.search({'step' : step});
+//  });
+
 });

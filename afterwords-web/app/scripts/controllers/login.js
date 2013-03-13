@@ -1,23 +1,43 @@
 'use strict';
 
-afterwords..controller('LoginCtrl', function($scope, $http) {
-  $scope.login = {};
-  $scope.login.user = null;
+afterwords.controller('LoginCtrl', function($scope, $rootScope, $http, dialog, authService, $log) {
+  $rootScope.login = {};
+  $rootScope.login.email = '';
+  $rootScope.login.password = '';
+  $rootScope.login.user = null;
 
-  $scope.login.connect = function() {
-    $http.get('http://localhost\\:9000/api/users/' + $scope.login.login).success(function(data, status) {
+  $rootScope.login.connect = function() {
+    var config = {"withCredentials": true};
+    $http.get('http://localhost:9000/api/users/' + $rootScope.login.email, config).success(function(data, status) {
       // despite its name, this callback is triggered even in case of an error, so we have to take care
-      if (status < 200 || status >= 300)
+      if (status < 200 || status >= 300){
+        dialog.close();
+        $log.error("Error getting user from server. Server status code: " + status);
         return;
-      $scope.login.user = data;
+      }
+      $rootScope.login.user = data;
+      authService.loginConfirmed();
+      dialog.close();
     });
   };
 
-  $scope.login.disconnect = function() {
-    $scope.login.user = null;
+  $rootScope.login.cancel = function() {
+    dialog.close();
+  }
+
+  $rootScope.login.disconnect = function() {
+    $rootScope.login.email = '';
+    $rootScope.login.password = '';
+    $rootScope.login = {};
+    $rootScope.login.user = null;
   };
 
-  $scope.$watch('login.login + login.password', function() {
-    $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode($scope.login.login + ':' + $scope.login.password);
+  $rootScope.$watch('login.email + login.password', function() {
+    if ($rootScope.login.email && $rootScope.login.password){
+      $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode($rootScope.login.email + ':' + $rootScope.login.password);
+    }
+    else {
+      delete $http.defaults.headers.common['Authorization'];
+    }
   });
-};
+});

@@ -1,8 +1,15 @@
 {
+  "common" : {
+    "cancel" : "Cancel",
+    "email" : "Email"
+  },
   "login": {
     "register" : "Register",
     "sign-in" : "Sign in",
-    "sign-in-via" : "Sign in via"
+    "sign-in-via" : "Sign in via",
+    "greeting" : "Welcome",
+    "logout" : "Logout",
+    "password" : "Password"
   },
   "nav": {
     "home" : "Home",
@@ -31,7 +38,7 @@
       "words" : "words",
       "cost" : "Cost ",
       "rubles" : "rubles",
-      "errors-option" : "Add parsing errors - 700 p",
+      "errors-option" : "Add analysis of mistakes - 700 p",
       "errors-description" : "(Analysis of mistakes - is a detailed error analysis - grammatical, stylistic and spelling, you could make in your text. You will receive a detailed description of the explanation as to why certain parts of your text should be corrected)",
       "how-to-pay" : "How to pay.",
       "pay-by-kiwi" : "Via kiwi-purse, or in any payment kiosk.",
