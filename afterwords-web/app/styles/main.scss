@@ -16,6 +16,23 @@
    }
  }
 
+ form label.required:after {
+   content: " *";
+   color: red;
+ }
+
+ form span#required-fields:before {
+   content: "* ";
+   color: red;
+ }
+
+ form div.switch {
+   margin-top: 1em;
+   padding-top: 0.5em;
+   border-top: dotted 1px #808080;
+ }
+
+
  #footer {
    background-color: #f5f5f5;
  }

@@ -58,6 +58,6 @@ var afterwords = angular.module('afterwords', ['http-auth-interceptor', 'ngResou
     $httpProvider.defaults.withCredentials = true;
   })
   .config(function($dialogProvider){
-    $dialogProvider.options({dialogFade: true, backdropFade: true})
+    $dialogProvider.options({dialogFade: true, backdropFade: false})
   });
 

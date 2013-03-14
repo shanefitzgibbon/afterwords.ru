@@ -1,0 +1,45 @@
+<div ng-hide="login.user">
+  <div class="modal-header">
+    <h1 i18n="login.register"></h1>
+  </div>
+  <form id="register" action="" ng-submit="registration.register()">
+    <fieldset>
+      <!--<legend>Login</legend>-->
+      <div class="modal-body">
+        <div id="personal-info" class="span3">
+          <p><label class="required" i18n="login.first-name"></label>
+            <input ng-model="registration.firstName" name="firstName" type="text"
+                   placeholder="{{'login.first-name' | i18n}}" required/></p>
+
+          <p><label class="required" i18n="login.last-name"></label>
+            <input ng-model="registration.lastName" name="lastName" type="text"
+                   placeholder="{{'login.last-name' | i18n}}" required/></p>
+          <!--must add a pattern attribute to the email field as AngularJS has a more strict pattern than chrome (not sure about other browsers-->
+          <p><label class="required" i18n="common.email"></label>
+            <input ng-model="registration.email" name="email" type="email"
+                   pattern="^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$"
+                   placeholder="{{'common.email' | i18n}}" required/></p>
+        </div>
+        <div id="login-info" class="span3">
+          <p><label class="required" i18n="login.password"></label>
+            <input ng-model="registration.password" name="password" type="password"
+                   placeholder="{{'login.password' | i18n}}" required/></p>
+
+          <p><label class="required" i18n="login.confirm-password"></label>
+            <input ng-model="registration.confirm" name="confirm" type="password"
+                   placeholder="{{'login.confirm-password' | i18n}}" required/></p>
+        </div>
+        <div class="span6"><span id="required-fields" class="muted" i18n="login.required-fields"></span> </div>
+        <div class="switch span6 muted">
+          <span class="pull-right">{{'login.already-registered' | i18n}} <a ng-click="switch()" i18n="login.sign-in"></a></span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <p>
+          <button type="submit" class="btn btn-primary" i18n="login.register"></button>
+          <a ng-click="registration.cancel()" class="btn" i18n="common.cancel"></a>
+        </p>
+      </div>
+    </fieldset>
+  </form>
+</div>

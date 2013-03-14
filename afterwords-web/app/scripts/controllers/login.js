@@ -25,6 +25,11 @@ afterwords.controller('LoginCtrl', function($scope, $rootScope, $http, dialog, a
     dialog.close();
   }
 
+  $scope.switch = function() {
+    dialog.close();
+    $rootScope.openRegistrationDialog();
+  }
+
   $rootScope.login.disconnect = function() {
     $rootScope.login.email = '';
     $rootScope.login.password = '';

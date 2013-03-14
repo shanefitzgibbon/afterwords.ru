@@ -9,7 +9,14 @@
     "sign-in-via" : "Sign in via",
     "greeting" : "Welcome",
     "logout" : "Logout",
-    "password" : "Password"
+    "password" : "Password",
+    "first-name" : "First name",
+    "last-name" : "Last name",
+    "required-fields" : "Required fields",
+    "confirm-password" : "Confirm password",
+    "why-register" : "Почему я должен регистрироваться? Нам нужен адрес Вашей электронной почты для того, чтобы отправить Вам отредактированный текст.",
+    "need-to-register" : "Don't have an account?",
+    "already-registered" : "Already a user?"
   },
   "nav": {
     "home" : "Home",

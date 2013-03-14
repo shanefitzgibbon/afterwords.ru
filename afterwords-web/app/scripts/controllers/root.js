@@ -1,6 +1,6 @@
 'use strict';
 
-afterwords.controller('RootCtrl', function($scope, $window, $http, $dialog){
+afterwords.controller('RootCtrl', function($scope, $rootScope, $window, $http, $dialog){
   $scope.updateLang = function(language) {
     $.i18n.setLng(language, function(){
 //      $scope.$apply();
@@ -8,9 +8,14 @@ afterwords.controller('RootCtrl', function($scope, $window, $http, $dialog){
     });
   }
 
-  $scope.openLoginDialog = function(){
+  $rootScope.openLoginDialog = function(){
     var d = $dialog.dialog();
     d.open('views/login.html', 'LoginCtrl');
+  };
+
+  $rootScope.openRegistrationDialog = function(){
+    var d = $dialog.dialog();
+    d.open('views/register.html', 'RegisterCtrl');
   };
 
   $scope.$on('event:auth-loginRequired', function() {
