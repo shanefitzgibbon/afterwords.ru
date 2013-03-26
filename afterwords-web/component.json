@@ -12,6 +12,6 @@
     "angular-placeholders": "latest",
     "jquery": "~1.9.1",
     "angular-cookies": "~1.0.5",
-    "angular-http-auth": "latest"
+    "angular-http-auth": "https://github.com/shanefitzgibbon/angular-http-auth.git"
   }
 }

@@ -1,5 +1,6 @@
 package service
 
+import models.User
 import controllers.CORSHeaderNames._
 import play.api.mvc._
 import play.api.http.HeaderNames
@@ -7,6 +8,11 @@ import scala.Left
 import scala.Right
 import play.api.Logger
 import play.api.mvc.Results._
+
+/**
+ * A request that adds the User for the current call
+ */
+case class SecuredRequest[A](user: User, request: Request[A]) extends WrappedRequest(request)
 
 trait JsonAuthentication {
   
@@ -22,9 +28,17 @@ trait JsonAuthentication {
     }
   }
 
-  def authenticate(user: String, password: String) = {
-    Logger.info("authenticate " + user + " " + password)
-    true
+  def authenticate(user: String, password: String): Option[User] = {
+    //TODO move from plain password to bcrypt hashing
+    //https://github.com/bnoguchi/mongoose-auth/blob/master/lib/modules/password/plugin.js
+    Logger.info("authenticate " + user)
+    if (user.length == 0) None
+    if (password.length == 0) None
+    val currentUser = User.findOneByEmail(user)
+    currentUser match {
+      case Some(u) => if (u.password == password)  Some(u) else None
+      case None => None
+    }
   }
 
   def readBasicAuthentication(headers: Headers):
@@ -52,34 +66,62 @@ trait JsonAuthentication {
     }
   }
 
-  def AuthenticatedAction[A](bodyParser: BodyParser[A])(f: Request[A] => Result): Action[A] = {
+  def AuthenticatedAction[A](bodyParser: BodyParser[A])(f: SecuredRequest[A] => Result): Action[A] = {
     Action(bodyParser) {
       request =>
         val maybeCredentials = readQueryString(request) orElse
           readBasicAuthentication(request.headers)
+        val ALLOWED_ORIGIN: String = "http://localhost:3501"
         maybeCredentials.map { resultOrCredentials =>
           resultOrCredentials match {
-            case Left(errorResult) => errorResult
+            case Left(errorResult) => errorResult match {
+              case r:SimpleResult[AnyContent] => r.withHeaders(
+                ACCESS_CONTROL_ALLOW_ORIGIN -> ALLOWED_ORIGIN,
+                ACCESS_CONTROL_ALLOW_CREDENTIALS -> "true")
+              case r => r
+            }
             case Right(credentials) => {
               val (user, password) = credentials
-              if (authenticate(user, password)) {
-                f(request)
-              }
-              else {
-                Unauthorized("Invalid user name or password")
+              val maybeUser = authenticate(user, password)
+              maybeUser match {
+                case Some(user) => f(SecuredRequest(user, request)) match {
+                  case r:SimpleResult[AnyContent] => r.withHeaders(
+                    ACCESS_CONTROL_ALLOW_ORIGIN -> ALLOWED_ORIGIN,
+                    ACCESS_CONTROL_ALLOW_CREDENTIALS -> "true")
+                  case r => r
+                }
+                case None => Unauthorized("Invalid user name or password").withHeaders(
+                  ACCESS_CONTROL_ALLOW_ORIGIN -> ALLOWED_ORIGIN,
+                  ACCESS_CONTROL_ALLOW_CREDENTIALS -> "true")
               }
             }
           }
         }.getOrElse {
           Unauthorized.withHeaders(HeaderNames.WWW_AUTHENTICATE -> "Basic",
-          ACCESS_CONTROL_ALLOW_ORIGIN -> "http://localhost:3501",
+          ACCESS_CONTROL_ALLOW_ORIGIN -> ALLOWED_ORIGIN,
           ACCESS_CONTROL_ALLOW_CREDENTIALS -> "true")
         }
     }
   }
   
-  def AuthenticatedAction(f: Request[AnyContent] => Result): Action[AnyContent] = AuthenticatedAction(BodyParsers.parse.anyContent)(f)
+  def AuthenticatedAction(f: SecuredRequest[AnyContent] => Result): Action[AnyContent] = AuthenticatedAction(BodyParsers.parse.anyContent)(f)
   
   def AuthenticatedAction(f: => Result): Action[AnyContent] = AuthenticatedAction(_ => f)
+
+
+  def currentUser[A](implicit  request: Request[A]): Option[User] = {
+    val maybeCredentials = readQueryString(request) orElse readBasicAuthentication(request.headers)
+    maybeCredentials.map { resultOrCredentials =>
+      resultOrCredentials match {
+        case Left(errorResult) => None
+        case Right(credentials) => {
+          val (user, password) = credentials
+          User.findOneByEmail(user)
+        }
+      }
+    }.getOrElse {
+      None
+    }
+  }
 
 }

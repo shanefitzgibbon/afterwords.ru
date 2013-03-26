@@ -19,7 +19,7 @@ object InitialData {
     println(Job.findAll.mkString)
     if (Job.findAll.isEmpty) {
       //Test Customer
-      val testCustomer = new Customer(email="cust1@test.com", name="Test User", password="password", paymentMethods=List.empty[PaymentMethod])
+      val testCustomer = new Customer(email="cust1@test.com", firstName="Test", lastName="User", password="password", paymentMethods=List.empty[PaymentMethod])
       
       //Test Jobs
       Seq(

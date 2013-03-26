@@ -2,10 +2,11 @@
   <div class="modal-header">
     <h1 i18n="login.sign-in"></h1>
   </div>
-  <form id="login" action="" ng-submit="login.connect()">
+  <form id="login" action="" ng-submit="connect()">
     <fieldset>
       <!--<legend>Login</legend>-->
       <div class="modal-body">
+        <alert ng-repeat="alert in login.alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
         <div id="login-info" class="span6">
           <!--must add a pattern attribute to the email field as AngularJS has a more strict pattern than chrome (not sure about other browsers-->
           <p><label class="required" i18n="common.email"></label>
@@ -26,7 +27,7 @@
       <div class="modal-footer">
         <p>
           <button type="submit" class="btn btn-primary" i18n="login.sign-in"></button>
-          <a ng-click="login.cancel()" class="btn" i18n="common.cancel"></a>
+          <a ng-click="cancel()" class="btn" i18n="common.cancel"></a>
         </p>
       </div>
     </fieldset>

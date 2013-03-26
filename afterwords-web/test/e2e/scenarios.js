@@ -66,8 +66,14 @@ describe('afterwords app', function() {
         element('#continue').click();
         expect(element('span#quote_cost').text()).toBe('250');
         element('#continue').click();
+        sleep(2);
         pause();
-        expect(element('form#login').count()).toBe(1);
+        input('login.email').enter('test.user@no-email.com');
+        input('login.password').enter('password');
+        element('button.btn.btn-primary').click();
+        sleep(2);
+        expect(element('a#greeting').text()).toBe('Welcome, ');
+        pause();
       });
     });
 

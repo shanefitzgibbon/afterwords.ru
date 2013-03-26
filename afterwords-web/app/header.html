@@ -20,11 +20,13 @@
                 <li><a href="/contacts" i18n="nav.contacts"></a></li>
             </ul>
             <ul class="nav pull-right" ng-hide="login.user">
+              <li><a href="/jobs" i18n="nav.jobs"></a></li>
               <li><a id="sign_in" ng-click="openLoginDialog()" i18n="login.sign-in"></a></li>
               <li><a id="register" ng-click="openRegistrationDialog()" i18n="login.register"></a></li>
             </ul>
             <ul class="nav pull-right" ng-show="login.user">
-              <li><a id="greeting">{{'login.greeting' | i18n}}, {{login.user.name}}</a></li>
+                <li><a href="/jobs" i18n="nav.jobs"></a></li>
+              <li><a id="greeting">{{'login.greeting' | i18n}}, {{login.user.firstName}}</a></li>
               <li><a id="logout" ng-click="login.disconnect()">{{'login.logout' | i18n}}</a></li>
             </ul>
         </div>

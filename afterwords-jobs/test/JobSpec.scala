@@ -48,7 +48,7 @@ class JobSpec extends Specification {
     
     "on creation, create a document version and associate it with the job" in {
       running(FakeApplication(additionalConfiguration = mongoTestDatabase())) {
-        val testCustomer = Customer("jobspec_test@email.com", "JobSpecTest", "password")
+        val testCustomer = Customer("jobspec_test@email.com", "Bob", "JobSpecTest", "password")
         val createdJobId = Job.create(testText)(testCustomer)
         createdJobId should not be (None)
         val foundJob = Job.findOneById(createdJobId.get)
@@ -63,9 +63,38 @@ class JobSpec extends Specification {
     
     "on creation, initialise a payment process" in { pending }
     
-    "be possible to get a list of pending jobs for a customer" in { pending }
+    "be possible to get a list of pending jobs for a customer" in {
+      val testCustomer = Customer("jobspec_test@email.com", "Bob", "JobSpecTest", "password")
+      val createdJobId1 = Job.create(testText)(testCustomer)
+      val createdJobId2 = Job.create(testText)(testCustomer)
+
+      val pendingJobs = Job.findAllPending(testCustomer).toList
+      pendingJobs should not be (none)
+      pendingJobs must haveOneElementLike { case job: Job => job.id must_== createdJobId1.get }
+      pendingJobs must haveOneElementLike { case job: Job => job.id must_== createdJobId2.get }
+      pendingJobs must haveAllElementsLike { case job: Job => {
+        job.createdBy must_== testCustomer.email
+        job.completed must beFalse
+      }}
+    }
     
-    "be possible to get a list of completed jobs for a customer" in { pending }
+    "be possible to get a list of completed jobs for a customer" in {
+      val testCustomer = Customer("jobspec_test@email.com", "Bob", "JobSpecTest", "password")
+      val createdJobId1 = Job.create(testText)(testCustomer)
+      val createdJobId2 = Job.create(testText)(testCustomer)
+
+      //update one of the jobs to completed
+      val job2 = Job.findOneById(createdJobId2.get).get
+      Job.save(job2.copy(completed = true))
+
+      val pendingJobs = Job.findAllCompleted(testCustomer).toList
+      pendingJobs should not be (none)
+      pendingJobs must haveAllElementsLike { case job: Job => {
+        job.createdBy must_== testCustomer.email
+        job.completed must beTrue
+      }}
+      pendingJobs must haveOneElementLike { case job: Job => job.id must_== createdJobId2.get }
+    }
     
     "be possible to get a list of assigned jobs for an editor" in { pending }
     

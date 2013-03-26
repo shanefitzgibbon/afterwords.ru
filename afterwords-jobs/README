@@ -1,4 +1,11 @@
-This is your new Play 2.0 application
-=====================================
+Server code for Afterwords.ru
+=============================
 
-This file will be packaged with your application, when using `play dist`.
+Frameworks
+----------
+- Play 2.0.4 Scala
+
+Notes:
+------
+
+- Tests are dependent on a running mongod process running on port 27017 (the default).

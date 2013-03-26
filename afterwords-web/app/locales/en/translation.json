@@ -24,7 +24,8 @@
     "faq" : "FAQ",
     "editors" : "Editors",
     "prices" : "Prices",
-    "contacts" : "Contacts"
+    "contacts" : "Contacts",
+    "jobs" : "My Jobs"
   },
   "main" : {
     "heading" : "Editing your text is now very easy",
@@ -57,5 +58,13 @@
       "information" : "The edited text will be emailed to you within 24 hours.",
       "feedback" : "We also would appreciate your feedback and comments"
     }
+  },
+  "jobs" : {
+    "pending-heading" : "Pending Jobs",
+    "completed-heading" : "Completed Jobs",
+    "created" : "Upload date",
+    "completed": "Completed",
+    "due-date" : "Due date",
+    "original-text" : "Text"
   }
 }

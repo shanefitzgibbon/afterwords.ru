@@ -7,15 +7,18 @@ import com.novus.salat.global._
 import com.novus.salat.dao._
 import com.novus.salat.annotations._
 import Database.mongoDB
+import com.mongodb
 
-abstract class User{
+@Salat
+sealed abstract class User{
   val email: String
-  val name: String
+  val firstName: String
+  val lastName: String
   val password: String
 }
-case class Administrator(email: String, name: String, password: String) extends User
-case class Editor(email: String, name: String, password: String) extends User
-case class Customer(email: String, name: String, password: String, paymentMethods: List[PaymentMethod] = List.empty[PaymentMethod]) extends User
+case class Administrator(email: String, firstName: String, lastName: String, password: String) extends User
+case class Editor(email: String, firstName: String, lastName: String, password: String) extends User
+case class Customer(email: String, firstName: String, lastName: String, password: String, paymentMethods: List[PaymentMethod] = List.empty[PaymentMethod]) extends User
 
 case class PaymentMethod(name: String, lastFour: Int, cryptedNumber: String, expirationDate: Date)
 
@@ -71,14 +74,44 @@ object Job extends ModelCompanion[Job, ObjectId] {
   }
 
   ///Queries
+  def findAllForCustomer(customer: Customer) = {
+    dao.find(MongoDBObject("createdBy" -> customer.email))
+      .sort(orderBy = MongoDBObject("created" -> -1))
+  }
+
+  def findAllPending(customer: Customer) = {
+    dao.find(MongoDBObject("createdBy" -> customer.email, "completed" -> false))
+      .sort(orderBy = MongoDBObject("created" -> -1))
+  }
+
+  def findAllCompleted(customer: Customer) = {
+    dao.find(MongoDBObject("createdBy" -> customer.email, "completed" -> true))
+      .sort(orderBy = MongoDBObject("created" -> -1))
+  }
 
 }
 
-object Customer extends ModelCompanion[Customer, ObjectId] {
+object User extends ModelCompanion[User, ObjectId] {
+
+  val usersCollection = mongoDB("users")
+  usersCollection.ensureIndex( MongoDBObject("email" -> 1 ) , "email_index", true )
+  val dao = new SalatDAO[User, ObjectId](collection = usersCollection){}
+
+  def findOneByEmail(email: String) = dao.findOne(MongoDBObject("email" -> email))
+}
+
+object Customer {
   
-  val customersCollection = mongoDB("customers")
-  
-  val dao = new SalatDAO[Customer, ObjectId](collection = customersCollection){}
+  def register(newCustomer: Customer) = {
+    //TODO add checks to ensure that no two customers have same email address
+    try{
+      User.insert(newCustomer, WriteConcern.Safe)
+    }
+    catch {
+      case ex: mongodb.MongoException.DuplicateKey => throw new DuplicateCustomerException(ex.getMessage)
+      case ex: mongodb.MongoException.Network => None
+    }
+  }
 } 
 
 object Document {
@@ -90,6 +123,8 @@ object Document {
    */
   def insert(document: Document) = null
 }
+
+case class DuplicateCustomerException(message: String) extends Exception
 
 
 

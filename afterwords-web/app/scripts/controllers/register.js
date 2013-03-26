@@ -1,6 +1,6 @@
 'use strict';
 
-afterwords.controller('RegisterCtrl', function($scope, $rootScope, $http, dialog, $log) {
+afterwords.controller('RegisterCtrl', function($scope, $rootScope, userService, dialog, $log) {
   $scope.registration = {};
   $scope.registration.firstName = '';
   $scope.registration.lastName = '';
@@ -8,11 +8,14 @@ afterwords.controller('RegisterCtrl', function($scope, $rootScope, $http, dialog
   $scope.registration.password = '';
   $scope.registration.confirm = '';
 
-  $scope.registration.register = function() {
-    dialog.close();
+  $scope.register = function() {
+    userService.register($scope.registration,
+      function(data, status) { $rootScope.login.user = data; dialog.close(); },
+      function(data, status) { dialog.close(); }
+    );
   };
 
-  $scope.registration.cancel = function() {
+  $scope.cancel = function() {
     dialog.close();
   }
 

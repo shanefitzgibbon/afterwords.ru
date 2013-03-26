@@ -1,48 +1,30 @@
 'use strict';
 
-afterwords.controller('LoginCtrl', function($scope, $rootScope, $http, dialog, authService, $log) {
-  $rootScope.login = {};
-  $rootScope.login.email = '';
-  $rootScope.login.password = '';
-  $rootScope.login.user = null;
+afterwords.controller('LoginCtrl', function($scope, $rootScope, $http, dialog, userService, $log) {
 
-  $rootScope.login.connect = function() {
-    var config = {"withCredentials": true};
-    $http.get('http://localhost:9000/api/users/' + $rootScope.login.email, config).success(function(data, status) {
-      // despite its name, this callback is triggered even in case of an error, so we have to take care
-      if (status < 200 || status >= 300){
-        dialog.close();
-        $log.error("Error getting user from server. Server status code: " + status);
-        return;
+  $scope.connect = function() {
+    userService.connect(
+      function(data, status) {
+          $rootScope.login.user = data;
+          dialog.close();
+      },
+      function(data, status) {
+          $log.error("Could not complete login request.");
+          $log.info("Failed Login. status: " + status + " data: " + data);
+          dialog.close();
       }
-      $rootScope.login.user = data;
-      authService.loginConfirmed();
-      dialog.close();
-    });
+    );
   };
 
-  $rootScope.login.cancel = function() {
+  $scope.cancel = function() {
     dialog.close();
+    $rootScope.login.alerts = [];
   }
 
   $scope.switch = function() {
     dialog.close();
+    $rootScope.login.alerts = [];
     $rootScope.openRegistrationDialog();
   }
 
-  $rootScope.login.disconnect = function() {
-    $rootScope.login.email = '';
-    $rootScope.login.password = '';
-    $rootScope.login = {};
-    $rootScope.login.user = null;
-  };
-
-  $rootScope.$watch('login.email + login.password', function() {
-    if ($rootScope.login.email && $rootScope.login.password){
-      $http.defaults.headers.common['Authorization'] = 'Basic ' + Base64.encode($rootScope.login.email + ':' + $rootScope.login.password);
-    }
-    else {
-      delete $http.defaults.headers.common['Authorization'];
-    }
-  });
 });

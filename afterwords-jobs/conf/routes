@@ -6,14 +6,18 @@
 GET     /                     controllers.Application.index
 
 # Preflight request handling
-OPTIONS /api/*url								controllers.Application.checkPreFlight(url: String)
+OPTIONS /api/*url					controllers.Application.checkPreFlight(url: String)
 
 # Jobs
 GET     /jobs            			controllers.Jobs.index
-POST     /api/jobs            			controllers.Jobs.newJob
+POST    /api/jobs            		controllers.Jobs.newJob
+GET     /api/jobs/pending           controllers.Jobs.pendingJobs
+GET     /api/jobs/completed         controllers.Jobs.completedJobs
 
 # Users
-GET			/api/users/:email			controllers.Customers.find(email: String)
+GET     /api/login                  controllers.Users.login
+# GET		/api/users/:email			controllers.Customers.find(email: String)
+POST    /api/users/register         controllers.Customers.register
 
 
 # Map static resources from the /public folder to the /assets URL path
