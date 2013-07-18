@@ -41,8 +41,8 @@ describe('Controller: MainCtrl', function() {
     expect(scope.process.currentStep).toEqual('step1')
   });
 
-  it('should default the "add parsing errors"" in the process to false', function () {
-    expect(scope.process.addParsingErrors).toBe(false);
+  it('should default the "include analysis" in the document to false', function () {
+    expect(scope.awdoc.includeAnalysis).toBe(false);
   });
 
   it('should revert the current step in the process to "step1" when the cancel method is called', function () {
@@ -50,7 +50,7 @@ describe('Controller: MainCtrl', function() {
     expect(scope.process.currentStep).toEqual('step2');
     scope.process.cancel();
     expect(scope.process.currentStep).toEqual('step1');
-    expect(scope.process.addParsingErrors).toBe(false)
+    expect(scope.awdoc.includeAnalysis).toBe(false)
   });
 
   it('should calculate the number of pages of text', function () {
@@ -63,8 +63,9 @@ describe('Controller: MainCtrl', function() {
 
   });
 
-  it('should calculate the cost of a job with text < 300 words to cost 200 rubles', function () {
+  it('should calculate the cost of a job with text < 300 words to cost 250 rubles', function () {
     scope.awdoc.text = "this is a very short text";
+    scope.awdoc.includeAnalysis = false;
     expect(scope.awdoc.cost()).toBe(250);
     scope.awdoc.text = testText599Words;
     expect(scope.awdoc.cost()).toBe(500);
@@ -72,6 +73,23 @@ describe('Controller: MainCtrl', function() {
     expect(scope.awdoc.cost()).toBe(750);
   });
 
+  it('should calculate the cost of a job with 1 page + analysis to cost 950 rubles', function () {
+    scope.awdoc.text = "this is a very short text";
+    scope.awdoc.includeAnalysis = true;
+    expect(scope.awdoc.cost()).toBe(950);
+  });
+
+  it('should calculate the cost of a job with 2 pagea + analysis to cost 1900 rubles', function () {
+    scope.awdoc.text = testText599Words;
+    scope.awdoc.includeAnalysis = true;
+    expect(scope.awdoc.cost()).toBe(1900);
+  });
+
+  it('should calculate the cost of a job with 3 page + analysis to cost 2850 rubles', function () {
+    scope.awdoc.text = testText601Words;
+    scope.awdoc.includeAnalysis = true;
+    expect(scope.awdoc.cost()).toBe(2850);
+  });
 
   var testText599Words = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ante orci, ornare at laoreet non, aliquet in turpis. Ut a pellentesque libero. Ut varius rutrum nunc. Nulla non est metus, at mollis tortor. Vestibulum eget velit vel massa mollis tempus in auctor ante. Vivamus pharetra, mauris in hendrerit mattis, sapien lorem ornare arcu, eget volutpat nisl nulla at nisi. Nam gravida ipsum nec nibh vehicula pharetra. Fusce sed tempus leo. Nullam rutrum neque dui, vel dapibus magna. Aenean eros massa, placerat vitae feugiat in, venenatis ut est. Duis quis augue ante, rutrum vulputate neque.\n\nInteger semper augue nec est pulvinar ut adipiscing massa porttitor. Duis nisi dolor, imperdiet vel dapibus eu, tincidunt ac enim. Mauris nec lacus sed nibh sollicitudin adipiscing. Quisque volutpat leo dapibus justo aliquet blandit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dignissim dignissim mi, eu condimentum diam accumsan ut. Sed arcu dui, ornare id aliquam ac, venenatis vel nisl.\n\nPhasellus interdum lobortis justo, sit amet facilisis mauris porta a. Nam mattis viverra odio quis cursus. Nullam ac ultrices diam. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras pulvinar ullamcorper magna, malesuada consectetur arcu tempor a. Vivamus eget dui eget nibh posuere egestas. Morbi vel arcu rutrum diam tincidunt ultricies fringilla at risus. Nullam tempor facilisis ante.\n\nPhasellus vitae est at arcu scelerisque dapibus. Etiam placerat ligula id diam sagittis ac iaculis dolor volutpat. Phasellus nibh felis, mollis sed lacinia ut, convallis vitae erat. Sed mi tellus, rutrum vel vehicula a, mollis vel nibh. Donec pharetra nisl sed augue tempus tincidunt. Pellentesque ac elementum sapien. Aliquam nec leo sed augue aliquam tristique. Ut varius nisi nec mauris facilisis fringilla. Praesent blandit iaculis mi at hendrerit. Proin consectetur magna tempor est dapibus et placerat dui ullamcorper. Quisque imperdiet cursus fermentum. Fusce metus dolor, condimentum eu rhoncus quis, placerat in mi. Proin hendrerit bibendum orci et dictum. Aliquam pellentesque, justo placerat ultricies egestas, ipsum orci sollicitudin neque, tincidunt tristique nibh mauris quis dolor. Nullam faucibus sollicitudin tortor eget condimentum.\n\nCurabitur non enim elit. Duis non posuere enim. Sed et ligula mi, at sollicitudin est. Suspendisse sollicitudin enim diam. Suspendisse sit amet eros vitae lorem faucibus tincidunt eget at sapien. Donec a mi nec mi dapibus placerat vitae eu metus. Sed porta tincidunt viverra. Integer mattis eros interdum sapien consequat eget iaculis arcu ultricies. Nullam at varius arcu.\n\nSed quis dui ac felis ornare accumsan. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi luctus sapien quis augue tempor ac luctus sapien auctor. Morbi eget nulla odio, at volutpat est. Nulla eu euismod ante. Proin feugiat scelerisque vehicula. Phasellus suscipit ullamcorper ligula id sollicitudin. Donec at leo libero, eget pellentesque erat. Phasellus sed nulla erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur consectetur tempor pellentesque. Mauris ullamcorper mi at metus pharetra lacinia. Aliquam pretium, ipsum vulputate aliquam adipiscing, nisi mauris accumsan urna, eu scelerisque diam tellus in nisi. Nullam odio metus, scelerisque et porta nec, tristique semper eros. Donec eu nibh in est mollis bibendum.\n\nFusce metus turpis, congue et dignissim sit amet, eleifend non tortor. Suspendisse potenti. Nam dui diam, congue nec faucibus vitae, convallis sit amet risus. Donec at lorem massa, id rhoncus eros. Nam pellentesque, massa vel auctor tempus, dui elit adipiscing nisl, vitae volutpat tortor velit nec augue. Aliquam vel dui ut arcu feugiat consectetur. Ut vitae urna nibh. Phasellus nisi purus, porttitor id tincidunt eget, cursus sed odio. Curabitur lacus lacus, scelerisque vitae semper vel, semper sit amet ante. Sed sagittis tortor tortor, a tincidunt tellus. Integer.";
 

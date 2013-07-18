@@ -42,6 +42,10 @@ object Jobs extends Controller with service.JsonAuthentication {
     Ok(views.html.jobs.index(Job.findAll))
   }
 
+  def list(page:Int, orderBy: Int, state: String) = Action {
+    Ok(views.html.jobs.list(Job.list(page = page, orderBy = orderBy, state = state), orderBy))
+  }
+
   def newJob = AuthenticatedAction(parse.json) { request =>
     val json = request.body
     val submittedText = (json \ "text").as[String]

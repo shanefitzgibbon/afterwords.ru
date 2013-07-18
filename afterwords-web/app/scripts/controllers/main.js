@@ -13,7 +13,8 @@ afterwords.controller('MainCtrl', function($scope, $resource, jobService, $locat
     this.serverId = '';
     //public functions
     this.wordCount = function(){
-      if (this.text == undefined || this.text.length == 0) return 0;
+      if (typeof this.text == 'undefined') return 0;
+      if (this.text.length == 0) return 0;
       var regex = /\s+/gi;
       var count = this.text.trim().replace(regex, ' ').split(' ').length;
       return count
@@ -23,7 +24,7 @@ afterwords.controller('MainCtrl', function($scope, $resource, jobService, $locat
     }
     this.cost = function(){
       var documentCost = this.pageCount() * costPerPage;
-      var additionalCosts = this.includeAnalysis ? costIncludeAnalysis : 0;
+      var additionalCosts = this.includeAnalysis ? (costIncludeAnalysis * this.pageCount()) : 0;
       return documentCost + additionalCosts;
     }
     this.submit = function(){

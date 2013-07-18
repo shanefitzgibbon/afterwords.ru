@@ -2,7 +2,7 @@
 
 function valueFn(value) {return function() {return value;};}
 
-var afterwords = angular.module('afterwords', ['http-auth-interceptor', 'ngResource', 'ngCookies', 'ui.bootstrap', 'ngGrid', 'placeholders.img'])
+var afterwords = angular.module('afterwords', ['http-auth-interceptor', 'ngResource', 'ngCookies', 'ui.bootstrap', 'placeholders.img'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {

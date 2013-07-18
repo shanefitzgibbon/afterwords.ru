@@ -1,13 +1,13 @@
 'use strict';
 
 // devcode: !production
-var RESOURCE_SERVER_URL = 'http://localhost\\:9000';
-var SERVER_URL = 'http://localhost:9000';
+//var RESOURCE_SERVER_URL = 'http://localhost\\:9000';
+//var SERVER_URL = 'http://localhost:9000';
 // endcode
 
 // devcode: production
-//var RESOURCE_SERVER_URL = 'http://afterwords.cloudfoundry.com';
-//var SERVER_URL = 'http://afterwords.cloudfoundry.com';
+var RESOURCE_SERVER_URL = 'http://afterwords.cloudfoundry.com';
+var SERVER_URL = 'http://afterwords.cloudfoundry.com';
 //endcode
 
 afterwords.factory('jobService', function($resource, $log){

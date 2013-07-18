@@ -1,7 +1,11 @@
  @import "compass_twitter_bootstrap";
+ @import "compass/typography/text/replacement";
 
  .page-header {
    text-align: center;
+   h1 {
+     @include replace-text-with-dimensions('logo.png');
+   }
  }
 
  #main {

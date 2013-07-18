@@ -2,12 +2,13 @@ package models
 
 import java.util.Date
 import com.mongodb.casbah.Imports._
-import com.novus.salat._
-import com.novus.salat.global._
 import com.novus.salat.dao._
 import com.novus.salat.annotations._
 import Database.mongoDB
 import com.mongodb
+
+//use the salat context from models/package.scala
+import models.salatctx._
 
 @Salat
 sealed abstract class User{
@@ -22,8 +23,25 @@ case class Customer(email: String, firstName: String, lastName: String, password
 
 case class PaymentMethod(name: String, lastFour: Int, cryptedNumber: String, expirationDate: Date)
 
+sealed trait TaskStatus
+case object CREATED extends TaskStatus
+case object READY extends TaskStatus
+case object RESERVED extends TaskStatus
+case object IN_PROGRESS extends TaskStatus
+case object COMPLETED extends TaskStatus
+case object FAILED extends TaskStatus
+case object ERROR extends TaskStatus
+case object OBSOLETE extends TaskStatus
+
+sealed trait PaymentStatus
+case object PENDING extends PaymentStatus
+case object PAID extends PaymentStatus
+case object REJECTED extends PaymentStatus
+
+
 case class Job(
   @Key("_id") id: ObjectId = new ObjectId,
+  state: String = "PENDING",
   created: Date,
   createdBy: String,
   completed: Boolean,
@@ -89,6 +107,22 @@ object Job extends ModelCompanion[Job, ObjectId] {
       .sort(orderBy = MongoDBObject("created" -> -1))
   }
 
+  val columns =  List("id", "state", "created", "createdBy", "completed", "dueDate", "assignedTo", "reviewedBy")
+
+  def list(page: Int = 0, pageSize: Int = 10, orderBy: Int = 1, state: String = "PENDING"): Page[Job] = {
+    //val where = MongoDBObject("completed" -> completed)
+    val where = MongoDBObject.empty
+    val ascDesc = if(orderBy > 0) 1 else -1
+    val order = MongoDBObject(columns(orderBy.abs - 1) -> ascDesc)
+
+
+    val offset = pageSize * page
+    val job = dao.find(where).sort(order).limit(pageSize).skip(offset).toSeq
+    val totalRows = dao.collection.count()
+
+    val jobs = job.map{j => j}
+    Page(jobs, page, offset, totalRows)
+  }
 }
 
 object User extends ModelCompanion[User, ObjectId] {
@@ -126,6 +160,13 @@ object Document {
 
 case class DuplicateCustomerException(message: String) extends Exception
 
+/**
+ * Helper for pagination.
+ */
+case class Page[A](items: Seq[A], page: Int, offset: Long, total: Long) {
+  lazy val prev = Option(page - 1).filter(_ >= 0)
+  lazy val next = Option(page + 1).filter(_ => (offset + items.size) < total)
+}
 
 
 

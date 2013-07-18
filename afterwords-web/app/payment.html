@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AfterWords</title>
+</head>
+<body>
+  <form method="post" action="https://demo.moneta.ru/assistant.htm">
+    <input type="text" name="MNT_ID" value="51016968">
+    <input type="text" name="MNT_TRANSACTION_ID" value="FF790ABCD">
+    <input type="hidden" name="MNT_CURRENCY_CODE" value="RUB">
+    <input type="text" name="MNT_AMOUNT" value="123.45">
+    <input type="text" name="MNT_TEST_MODE" value="1">
+    <input type="text" name="MNT_SIGNATURE" value="4f4ef0a3fa6b271ee82850cd7276e1f0">
+    <input type="text" name="MNT_SUCCESS_URL"
+           value="http://test.afterwords.ru.s3-website-eu-west-1.amazonaws.com/success.htm">
+    <input type="text" name="MNT_FAIL_URL"
+           value="http://test.afterwords.ru.s3-website-eu-west-1.amazonaws.com/failure.htm">
+
+    <div class="button" style="margin-left:70px;">
+      <input type="submit" class="rc5" value="Pay with the help of Moneta.ru">
+    </div>
+  </form>
+</body>

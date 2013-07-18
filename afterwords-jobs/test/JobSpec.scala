@@ -69,6 +69,7 @@ class JobSpec extends Specification {
       val createdJobId2 = Job.create(testText)(testCustomer)
 
       val pendingJobs = Job.findAllPending(testCustomer).toList
+
       pendingJobs should not be (none)
       pendingJobs must haveOneElementLike { case job: Job => job.id must_== createdJobId1.get }
       pendingJobs must haveOneElementLike { case job: Job => job.id must_== createdJobId2.get }
@@ -87,15 +88,28 @@ class JobSpec extends Specification {
       val job2 = Job.findOneById(createdJobId2.get).get
       Job.save(job2.copy(completed = true))
 
-      val pendingJobs = Job.findAllCompleted(testCustomer).toList
-      pendingJobs should not be (none)
-      pendingJobs must haveAllElementsLike { case job: Job => {
+      val completedJobs = Job.findAllCompleted(testCustomer).toList
+      completedJobs should not be (none)
+      completedJobs must haveAllElementsLike { case job: Job => {
         job.createdBy must_== testCustomer.email
         job.completed must beTrue
       }}
-      pendingJobs must haveOneElementLike { case job: Job => job.id must_== createdJobId2.get }
+      completedJobs must haveOneElementLike { case job: Job => job.id must_== createdJobId2.get }
     }
     
+    "be possible to get a list of all pending jobs in the system" in {
+      val testCustomer = Customer("jobspec_test@email.com", "Bob", "JobSpecTest", "password")
+      val createdJobId1 = Job.create(testText)(testCustomer)
+      val createdJobId2 = Job.create(testText)(testCustomer)
+
+      val pendingJobs = Job.list(completed = false).items
+
+      pendingJobs should not be (none)
+      pendingJobs must haveOneElementLike { case job: Job => job.id must_== createdJobId1.get }
+      pendingJobs must haveOneElementLike { case job: Job => job.id must_== createdJobId2.get }
+
+    }
+
     "be possible to get a list of assigned jobs for an editor" in { pending }
     
     "be possible to get a list of completed jobs for an editor" in { pending }

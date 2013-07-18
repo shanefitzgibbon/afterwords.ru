@@ -2,14 +2,49 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
     <head>
         <title>@title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-        <script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+
+
     </head>
     <body>
-        @content
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="page-header">
+                        <h1>Afterwords <small>Administration console</small></h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span2">
+                    <!--Sidebar content-->
+                    <ul class="nav nav-list">
+                        <li class="nav-header">Jobs</li>
+                        <li class="active"><a href="@routes.Jobs.list(state="pending")">Pending</a></li>
+                        <li><a href="@routes.Jobs.list(state="payment_pending")">Awaiting Payment</a></li>
+                        <li><a href="@routes.Jobs.list(state="completed")">Completed</a></li>
+                        <li class="nav-header">Admin</li>
+                        <li><a href="#">Customers</a></li>
+                        <li><a href="#">Payments</a></li>
+                        <li><a href="#">Editors</a></li>
+                    </ul>
+                </div>
+                <div class="span10">
+                    <!--Body content-->
+                    @content
+                </div>
+            </div>
+        </div>
+
+
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
     </body>
 </html>

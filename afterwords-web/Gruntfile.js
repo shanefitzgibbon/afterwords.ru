@@ -30,6 +30,7 @@ module.exports = function( grunt ) {
       dist: {
         // http://compass-style.org/help/tutorials/configuration-reference/#configuration-properties
         options: {
+          config: 'compass.rb',
           css_dir: 'temp/styles',
           sass_dir: 'app/styles',
           images_dir: 'app/images',
@@ -118,37 +119,37 @@ module.exports = function( grunt ) {
 
     // concat css/**/*.css files, inline @import, output a single minified css
     css: {
-      'styles/main.css': ['styles/**/*.css']
+//      'styles/main.css': ['styles/**/*.css']
     },
 
     // renames JS/CSS to prepend a hash of their contents for easier
     // versioning
     rev: {
-      js: 'scripts/**/*.js',
-      css: 'styles/**/*.css',
-      img: 'images/**'
+//      js: 'scripts/**/*.js',
+//      css: 'styles/**/*.css',
+//      img: 'images/**'
     },
 
     // usemin handler should point to the file containing
     // the usemin blocks to be parsed
     'usemin-handler': {
-      html: 'index.html'
+//      html: 'index.html'
     },
 
     // update references in HTML/CSS to revved files
     usemin: {
-      html: ['**/*.html'],
-      css: ['**/*.css']
+//      html: ['**/*.html'],
+//      css: ['**/*.css']
     },
 
     // HTML minification
     html: {
-      files: ['**/*.html']
+//      files: ['**/*.html']
     },
 
     // Optimizes JPGs and PNGs (with jpegtran & optipng)
     img: {
-      dist: '<config:rev.img>'
+//      dist: '<config:rev.img>'
     },
 
     // rjs configuration. You don't necessarily need to specify the typical

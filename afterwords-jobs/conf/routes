@@ -10,6 +10,8 @@ OPTIONS /api/*url					controllers.Application.checkPreFlight(url: String)
 
 # Jobs
 GET     /jobs            			controllers.Jobs.index
+GET     /jobs/list/:state          controllers.Jobs.list(page:Int ?= 0, s:Int ?= 2, state)
+
 POST    /api/jobs            		controllers.Jobs.newJob
 GET     /api/jobs/pending           controllers.Jobs.pendingJobs
 GET     /api/jobs/completed         controllers.Jobs.completedJobs

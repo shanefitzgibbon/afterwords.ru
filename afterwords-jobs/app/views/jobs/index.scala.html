@@ -1,7 +1,15 @@
 @(jobs: com.novus.salat.dao.SalatMongoCursor[models.Job])
+@main("Job Listing") {
 <h1>Jobs</h1>
-<ul>
-@for(job <- jobs) {
-  <li>@job.id - @job.dueDate - @*<a href="@controllers.routes.Jobs.show(job.id)">details</a>*@</li>
+
+<table class="table table-striped table-hover">
+    <tbody>
+    @for(job <- jobs) {
+        <tr>
+            <td>@job.id</td>
+            <td>@job.dueDate</td>
+        </tr>
+    }
+    </tbody>
+</table>
 }
-</ul>

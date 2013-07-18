@@ -71,7 +71,7 @@ trait JsonAuthentication {
       request =>
         val maybeCredentials = readQueryString(request) orElse
           readBasicAuthentication(request.headers)
-        val ALLOWED_ORIGIN: String = "http://localhost:3501"
+        val ALLOWED_ORIGIN: String = "http://test.afterwords.ru.s3-website-eu-west-1.amazonaws.com"
         maybeCredentials.map { resultOrCredentials =>
           resultOrCredentials match {
             case Left(errorResult) => errorResult match {

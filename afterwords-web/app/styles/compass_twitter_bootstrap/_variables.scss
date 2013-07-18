@@ -21,6 +21,7 @@ $white:                 #fff !default;
 // Accent colors
 // -------------------------
 $blue:                  #049cdb !default;
+$lightBlue:              #d1f2ff !default;
 $blueDark:              #0064cd !default;
 $green:                 #46a546 !default;
 $red:                   #9d261d !default;
@@ -32,7 +33,7 @@ $purple:                #7a43b6 !default;
 
 // Scaffolding
 // -------------------------
-$bodyBackground:        $white !default;
+$bodyBackground:        $lightBlue !default;
 $textColor:             $grayDark !default;
 
 

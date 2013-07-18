@@ -19,15 +19,15 @@ object Database {
       case Some(s) =>
         println(s)
         val vcapServicesJson = Json.parse(s)
-        val credentials = ((vcapServicesJson \ "mongodb-2.0")(0) \ "credentials")
+        val credentials = ((vcapServicesJson \ "mongolab-n/a")(0) \ "credentials")
         val url = (credentials \ "url").as[String]
         val db = (credentials \ "db").as[String]
         println("mongodbdb: " + db + " url: " + url)
         val mongodb = MongoConnection(MongoURI(url))(db)
-        val username = (credentials \ "username").as[String]
-        val password = (credentials \ "password").as[String]
-        val success = mongodb.authenticate(username, password)
-        println("Auth successful? " + success)
+//        val username = (credentials \ "username").as[String]
+//        val password = (credentials \ "password").as[String]
+//        val success = mongodb.authenticate(username, password)
+//        println("Auth successful? " + success)
         mongodb
       case _ => 
         println("Using localhost + config = " + configuration.getString("default.db"))
