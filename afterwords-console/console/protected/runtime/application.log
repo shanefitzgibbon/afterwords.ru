@@ -1,0 +1,226 @@
+2013/08/09 14:38:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "missing".' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('missing')
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/missing
+---
+2013/08/09 14:40:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "contacts".' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php:483
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(270): CController->missingAction('contacts')
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): CController->run('contacts')
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/contacts')
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/contacts
+---
+2013/08/09 14:47:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "contacts".' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php:483
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(270): CController->missingAction('contacts')
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): CController->run('contacts')
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/contacts')
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/contacts
+---
+2013/08/09 16:56:39 [error] [system.db.CDbCommand] Error in preparing SQL: CREATE TABLE 'tbl_user' (
+	"id" integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+	"username" varchar(255) NOT NULL,
+	"email" varchar(255) NOT NULL,
+	"password" varchar(255) NOT NULL,
+	"last_login_time" datetime DEFAULT NULL,
+	"create_time" datetime DEFAULT NULL,
+	"create_user_id" int(11) DEFAULT NULL,
+	"update_time" datetime DEFAULT NULL,
+	"update_user_id" int(11) DEFAULT NULL
+) ENGINE=InnoDB
+2013/08/09 16:56:39 [error] [system.db.CDbCommand] CDbCommand::execute() failed: CDbCommand failed to prepare the SQL statement: SQLSTATE[HY000]: General error: 1 table 'tbl_user' already exists. The SQL statement executed was: CREATE TABLE 'tbl_user' (
+	"id" integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+	"username" varchar(255) NOT NULL,
+	"email" varchar(255) NOT NULL,
+	"password" varchar(255) NOT NULL,
+	"last_login_time" datetime DEFAULT NULL,
+	"create_time" datetime DEFAULT NULL,
+	"create_user_id" int(11) DEFAULT NULL,
+	"update_time" datetime DEFAULT NULL,
+	"update_user_id" int(11) DEFAULT NULL
+) ENGINE=InnoDB.
+2013/08/09 16:59:23 [error] [php] PDO::__construct(): [2002] No such file or directory (trying to connect via unix:///var/mysql/mysql.sock) (/Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbConnection.php:423)
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbConnection.php(308): CDbConnection->setActive()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(442): CConsoleApplication->getComponent()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(451): MigrateCommand->getDbConnection()
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(482): MigrateCommand->getMigrationHistory()
+#6 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(84): MigrateCommand->getNewMigrations()
+#7 unknown(0): MigrateCommand->actionUp()
+#8 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs()
+#9 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleCommandRunner.php(67): MigrateCommand->run()
+#10 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleApplication.php(91): CConsoleCommandRunner->run()
+#11 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CConsoleApplication->processRequest()
+#12 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/yiic.php(33): CConsoleApplication->run()
+#13 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/yiic.php(7): require_once()
+#14 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/yiic(4): require_once()
+
+2013/08/09 16:59:56 [error] [php] PDO::__construct(): [2002] No such file or directory (trying to connect via unix:///var/mysql/mysql.sock) (/Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbConnection.php:423)
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbConnection.php(308): CDbConnection->setActive()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(442): CConsoleApplication->getComponent()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(451): MigrateCommand->getDbConnection()
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(482): MigrateCommand->getMigrationHistory()
+#6 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(84): MigrateCommand->getNewMigrations()
+#7 unknown(0): MigrateCommand->actionUp()
+#8 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs()
+#9 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleCommandRunner.php(67): MigrateCommand->run()
+#10 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleApplication.php(91): CConsoleCommandRunner->run()
+#11 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CConsoleApplication->processRequest()
+#12 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/yiic.php(33): CConsoleApplication->run()
+#13 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/yiic.php(7): require_once()
+#14 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/yiic(4): require_once()
+
+2013/08/09 17:09:25 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'afterwords.tbl_migration' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `tbl_migration`.
+2013/08/09 17:09:33 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42000]: Syntax error or access violation: 1072 Key column 'order_id' doesn't exist in table. The SQL statement executed was: ALTER TABLE `tbl_document` ADD CONSTRAINT `fk_document_order` FOREIGN KEY (`order_id`) REFERENCES `tbl_order` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT.
+2013/08/09 17:10:55 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'tbl_user' already exists. The SQL statement executed was: CREATE TABLE `tbl_user` (
+	`id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`username` varchar(255) NOT NULL,
+	`email` varchar(255) NOT NULL,
+	`password` varchar(255) NOT NULL,
+	`last_login_time` datetime DEFAULT NULL,
+	`create_time` datetime DEFAULT NULL,
+	`create_user_id` int(11) DEFAULT NULL,
+	`update_time` datetime DEFAULT NULL,
+	`update_user_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB.
+2013/08/09 17:21:23 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to find the code you requested.' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/gii/CCodeGenerator.php:90
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/actions/CInlineAction.php(49): CCodeGenerator->actionCode()
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): CController->run('code')
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('gii/AweModel/co...')
+#6 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#7 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#8 {main}
+REQUEST_URI=/gii/AweModel/code/id/0
+HTTP_REFERER=http://afterwords.local:8888/gii/AweModel
+---
+2013/08/09 17:25:34 [warning] [application] Failed to set unsafe attribute "layout" of "AweCrudCode".
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php (13)
+2013/08/09 17:25:34 [error] [php] include(EActiveRecordRelationBehavior.php): failed to open stream: No such file or directory (/Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/YiiBase.php:421)
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/YiiBase.php(196): import()
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CComponent.php(326): createComponent()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CComponent.php(297): Order->attachBehavior()
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/ar/CActiveRecord.php(388): Order->attachBehaviors()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/gii/generators/crud/CrudCode.php(66): model()
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/validators/CInlineValidator.php(42): AweCrudCode->validateModel()
+#6 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/validators/CValidator.php(213): CInlineValidator->validateAttribute()
+#7 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CModel.php(159): CInlineValidator->validate()
+#8 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/gii/CCodeGenerator.php(159): AweCrudCode->validate()
+#9 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/gii/CCodeGenerator.php(63): AweCrudGenerator->prepare()
+#10 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/actions/CInlineAction.php(49): AweCrudGenerator->actionIndex()
+#11 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#12 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(286): AweCrudGenerator->runAction()
+#13 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(265): AweCrudGenerator->runActionWithFilters()
+#14 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): AweCrudGenerator->run()
+#15 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#16 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CWebApplication->run()
+REQUEST_URI=/gii/AweCrud
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php (13)
+2013/08/09 17:32:26 [warning] [application] Failed to set unsafe attribute "layout" of "AweCrudCode".
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php (13)
+2013/08/09 17:32:26 [error] [php] include(EActiveRecordRelationBehavior.php): failed to open stream: No such file or directory (/Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/YiiBase.php:421)
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/YiiBase.php(196): import()
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CComponent.php(326): createComponent()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CComponent.php(297): Order->attachBehavior()
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/ar/CActiveRecord.php(388): Order->attachBehaviors()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/gii/generators/crud/CrudCode.php(66): model()
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/validators/CInlineValidator.php(42): AweCrudCode->validateModel()
+#6 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/validators/CValidator.php(213): CInlineValidator->validateAttribute()
+#7 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CModel.php(159): CInlineValidator->validate()
+#8 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/gii/CCodeGenerator.php(159): AweCrudCode->validate()
+#9 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/gii/CCodeGenerator.php(63): AweCrudGenerator->prepare()
+#10 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/actions/CInlineAction.php(49): AweCrudGenerator->actionIndex()
+#11 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(308): CInlineAction->runWithParams()
+#12 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(286): AweCrudGenerator->runAction()
+#13 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(265): AweCrudGenerator->runActionWithFilters()
+#14 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): AweCrudGenerator->run()
+#15 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#16 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CWebApplication->run()
+REQUEST_URI=/gii/AweCrud
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php (13)
+2013/08/09 17:35:31 [warning] [application] Failed to set unsafe attribute "layout" of "AweCrudCode".
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php (13)
+2013/08/09 17:35:43 [warning] [application] Failed to set unsafe attribute "layout" of "AweCrudCode".
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php (13)
+2013/08/09 17:35:48 [error] [exception.CException] exception 'CException' with message 'Alias "bootstrap.widgets.TbListView" is invalid. Make sure it points to an existing directory or file.' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/YiiBase.php:341
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWidgetFactory.php(146): YiiBase::import('bootstrap.widge...', true)
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CBaseController.php(146): CWidgetFactory->createWidget(Object(OrderController), 'bootstrap.widge...', Array)
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CBaseController.php(172): CBaseController->createWidget('bootstrap.widge...', Array)
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/views/order/index.php(21): CBaseController->widget('bootstrap.widge...', Array)
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CBaseController.php(126): require('/Users/shane/Pr...')
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Users/shane/Pr...', Array, true)
+#6 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(869): CBaseController->renderFile('/Users/shane/Pr...', Array, true)
+#7 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(782): CController->renderPartial('index', Array, true)
+#8 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/extensions/AweCrud/components/AweController.php(255): CController->render('index', Array, false)
+#9 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/OrderController.php(97): AweController->render('index', Array)
+#10 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/actions/CInlineAction.php(49): OrderController->actionIndex()
+#11 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#12 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#13 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#14 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): CController->run('')
+#15 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('order')
+#16 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#17 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#18 {main}
+REQUEST_URI=/order
+HTTP_REFERER=http://afterwords.local:8888/gii/AweCrud
+---
+2013/08/12 12:49:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "create/user".' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('create/user')
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/create/user
+---
+2013/08/12 12:51:19 [error] [exception.CException] exception 'CException' with message 'TbActiveForm and its behaviors do not have a method or closure named "passwordRepeatFieldRow".' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CComponent.php:265
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/views/user/_form.php(16): CComponent->__call('passwordRepeatF...', Array)
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/views/user/_form.php(16): TbActiveForm->passwordRepeatFieldRow(Object(User), 'password_repeat', Array)
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CBaseController.php(126): require('/Users/shane/Pr...')
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Users/shane/Pr...', Array, true)
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(869): CBaseController->renderFile('/Users/shane/Pr...', Array, true)
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/views/user/create.php(15): CController->renderPartial('_form', Array)
+#6 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CBaseController.php(126): require('/Users/shane/Pr...')
+#7 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CBaseController.php(95): CBaseController->renderInternal('/Users/shane/Pr...', Array, true)
+#8 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(869): CBaseController->renderFile('/Users/shane/Pr...', Array, true)
+#9 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(782): CController->renderPartial('create', Array, true)
+#10 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/UserController.php(78): CController->render('create', Array)
+#11 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/actions/CInlineAction.php(49): UserController->actionCreate()
+#12 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#13 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/filters/CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#14 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/filters/CFilter.php(40): CFilterChain->run()
+#15 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#16 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#17 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#18 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(291): CFilterChain->run()
+#19 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#21 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('user/create')
+#22 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#23 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#24 {main}
+REQUEST_URI=/user/create
+---
