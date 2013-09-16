@@ -18,6 +18,9 @@
  */
 class Payment extends AfterwordsActiveRecord
 {
+    const STATUS_PENDING = 0;
+    const STATUS_PAID = 1;
+    const STATUS_REJECTED = 2;
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.

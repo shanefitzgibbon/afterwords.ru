@@ -4,6 +4,7 @@
     <extra-name-characters>#@</extra-name-characters>
     <identifier-quote-string>`</identifier-quote-string>
     <synchronize>true</synchronize>
+    <auto-commit>false</auto-commit>
     <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
     <jdbc-url>jdbc:mysql://localhost:8889/afterwords</jdbc-url>
     <user-name>root</user-name>
@@ -23,6 +24,33 @@
     <schema name="" catalog="performance_schema"/>
     <schema name="" catalog="trackstar"/>
     <schema name="" catalog="u310679"/>
+    <table name="tbl_auth_assignment" schema="" catalog="afterwords" type="TABLE">
+      <column name="itemname" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="userid" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="bizrule" sqlType="TEXT" length="65535" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="data" sqlType="TEXT" length="65535" precision="0" nullable="true" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="itemname,userid"/>
+      <foreign-key name="fk_auth_assignment_userid" columns="userid" ref-table="tbl_user" ref-schema="" ref-catalog="afterwords" ref-columns="id" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="fk_auth_assignment_itemname" columns="itemname" ref-table="tbl_auth_item" ref-schema="" ref-catalog="afterwords" ref-columns="name" update-rule="0" delete-rule="0" deferrability="2"/>
+    </table>
+    <table name="tbl_auth_item" schema="" catalog="afterwords" type="TABLE">
+      <column name="name" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="type" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4"/>
+      <column name="description" sqlType="TEXT" length="65535" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="bizrule" sqlType="TEXT" length="65535" precision="0" nullable="true" jdbcType="-1"/>
+      <column name="data" sqlType="TEXT" length="65535" precision="0" nullable="true" jdbcType="-1"/>
+      <primary-key name="PRIMARY" columns="name"/>
+      <exported-key name="fk_auth_assignment_itemname" table="tbl_auth_assignment" schema="" catalog="afterwords" columns="itemname"/>
+      <exported-key name="fk_auth_item_child_child" table="tbl_auth_item_child" schema="" catalog="afterwords" columns="child"/>
+      <exported-key name="fk_auth_item_child_parent" table="tbl_auth_item_child" schema="" catalog="afterwords" columns="parent"/>
+    </table>
+    <table name="tbl_auth_item_child" schema="" catalog="afterwords" type="TABLE">
+      <column name="parent" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <column name="child" sqlType="VARCHAR" length="64" precision="0" nullable="false" jdbcType="12"/>
+      <primary-key name="PRIMARY" columns="parent,child"/>
+      <foreign-key name="fk_auth_item_child_child" columns="child" ref-table="tbl_auth_item" ref-schema="" ref-catalog="afterwords" ref-columns="name" update-rule="0" delete-rule="0" deferrability="2"/>
+      <foreign-key name="fk_auth_item_child_parent" columns="parent" ref-table="tbl_auth_item" ref-schema="" ref-catalog="afterwords" ref-columns="name" update-rule="0" delete-rule="0" deferrability="2"/>
+    </table>
     <table name="tbl_document" schema="" catalog="afterwords" type="TABLE">
       <column name="id" sqlType="INT" length="10" precision="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="order_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
@@ -80,6 +108,7 @@
       <column name="update_time" sqlType="DATETIME" length="19" precision="0" nullable="true" jdbcType="93"/>
       <column name="update_user_id" sqlType="INT" length="10" precision="0" nullable="true" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="id"/>
+      <exported-key name="fk_auth_assignment_userid" table="tbl_auth_assignment" schema="" catalog="afterwords" columns="userid"/>
       <exported-key name="fk_document_editor" table="tbl_document" schema="" catalog="afterwords" columns="editor_id"/>
       <exported-key name="fk_order_customer" table="tbl_order" schema="" catalog="afterwords" columns="customer_id"/>
     </table>

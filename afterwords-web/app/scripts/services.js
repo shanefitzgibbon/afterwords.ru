@@ -6,14 +6,14 @@
 // endcode
 
 // devcode: production
-var RESOURCE_SERVER_URL = 'http://afterwords.cloudfoundry.com';
-var SERVER_URL = 'http://afterwords.cloudfoundry.com';
+var RESOURCE_SERVER_URL = 'http://afterwords.local\\:8888';
+var SERVER_URL = 'http://afterwords.local:8888';
 //endcode
 
 afterwords.factory('jobService', function($resource, $log){
 
   this.submitJob = function(text, success) {
-    var JobResource = $resource(RESOURCE_SERVER_URL + '/api/jobs/:jobId', {});
+    var JobResource = $resource(RESOURCE_SERVER_URL + '/api/create/order', {});
     var newJob = new JobResource();
     newJob.text = text;
     newJob.$save(function(serverJob, responseHeaders){

@@ -1,0 +1,12 @@
+ssh -i afterwords.pem root@ec2-54-252-227-100.ap-southeast-2.compute.amazonaws.com
+
+                 LAMP appliance services───────────────────┐                                                                         
+│                                                          │                                                                         
+│ Web:        http://172.31.1.21                           │                                                                         
+│             https://172.31.1.21                          │                                                                         
+│ Web shell:  https://172.31.1.21:12320                    │                                                                         
+│ Webmin:     https://172.31.1.21:12321                    │                                                                         
+│ PHPMyAdmin: https://172.31.1.21:12322                    │                                                                         
+│ SSH/SFTP:   root@172.31.1.21 (port 22)                   │                                                                         
+│                                                          │                                                                         
+│ TKLBAM (Backup and Migration):  NO BACKUPS   

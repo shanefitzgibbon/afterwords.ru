@@ -30,22 +30,22 @@ class Controller extends CController
     {
         return array(
             array('allow',  // allow authenticated users to perform 'index' and 'view' actions
-                'controllers'=>array('issue','project','user'),
-                'actions'=>array('index','view', 'addUser'),
+                'controllers'=>array('order', 'document','payment','user'),
+                'actions'=>array('index','view', 'addUser', 'assignEditor'),
                 'users'=>array('@'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'controllers'=>array('issue','project','user'),
+                'controllers'=>array('order', 'document','payment','user', 'api'),
                 'actions'=>array('create','update'),
                 'users'=>array('@'),
             ),
             array('allow', // allow admin user to perform 'admin' and 'delete' actions
-                'controllers'=>array('issue','project','user'),
+                'controllers'=>array('order', 'document','payment','user'),
                 'actions'=>array('admin','delete'),
                 'users'=>array('admin'),
             ),
             array('deny',  // deny all users
-                'controllers'=>array('issue','project','user'),
+                'controllers'=>array('order', 'document','payment','user', 'api'),
                 'users'=>array('*'),
             ),
         );

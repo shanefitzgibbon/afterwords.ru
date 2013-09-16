@@ -224,3 +224,303 @@ Stack trace:
 #24 {main}
 REQUEST_URI=/user/create
 ---
+2013/09/14 20:24:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "users".' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('users')
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/users
+---
+2013/09/14 20:24:42 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "users".' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php:483
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(270): CController->missingAction('users')
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): CController->run('users')
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('site/users')
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/site/users
+---
+2013/09/14 20:31:24 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/auth/CAccessControlFilter.php:179
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/auth/CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(291): CFilterChain->run()
+#6 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): CController->run('admin')
+#8 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('user/admin')
+#9 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/user/admin
+HTTP_REFERER=http://afterwords.local:8888/user/index
+---
+2013/09/14 20:31:29 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/auth/CAccessControlFilter.php:179
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/auth/CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(291): CFilterChain->run()
+#6 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): CController->run('admin')
+#8 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('user/admin')
+#9 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/user/admin
+HTTP_REFERER=http://afterwords.local:8888/user/index
+---
+2013/09/15 15:44:53 [error] [php] Undefined index: model (/Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php:42)
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(286): ApiController->runAction()
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/create/order
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php (42)
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php (13)
+2013/09/15 16:05:02 [error] [php] Undefined index: model (/Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php:42)
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(286): ApiController->runAction()
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/create/order
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php (42)
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php (13)
+2013/09/15 20:20:48 [error] [php] Invalid argument supplied for foreach() (/Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php:98)
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(286): ApiController->runAction()
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/users/register
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php (98)
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php (13)
+2013/09/15 20:22:42 [error] [php] Undefined index: model (/Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php:105)
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(286): ApiController->runAction()
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/users/register
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php (105)
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php (13)
+2013/09/15 20:29:53 [error] [php] Trying to get property of non-object (/Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php:97)
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(286): ApiController->runAction()
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/users/register
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php (97)
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php (13)
+2013/09/15 20:44:36 [error] [php] Use of undefined constant id - assumed 'id' (/Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php:106)
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(286): ApiController->runAction()
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/users/register
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php (106)
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php (13)
+2013/09/15 21:06:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "login".' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php:483
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(270): CController->missingAction('login')
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): CController->run('login')
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('api/login')
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/api/login
+HTTP_REFERER=http://localhost:9000/
+---
+2013/09/15 21:29:21 [error] [exception.CException] exception 'CException' with message 'Property "UserIdentity.email" is not defined.' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php(136): CComponent->__get('email')
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/actions/CInlineAction.php(49): ApiController->actionLogin()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): CController->run('login')
+#6 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('api/login')
+#7 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#8 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/api/login
+HTTP_REFERER=http://localhost:9000/
+---
+2013/09/15 22:19:40 [error] [exception.CException] exception 'CException' with message 'Property "UserIdentity.email" is not defined.' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php(136): CComponent->__get('email')
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/actions/CInlineAction.php(49): ApiController->actionLogin()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): CController->run('login')
+#6 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('api/login')
+#7 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#8 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/api/login
+HTTP_REFERER=http://localhost:9000/
+---
+2013/09/15 22:20:25 [error] [exception.CException] exception 'CException' with message 'Property "UserIdentity.email" is not defined.' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php(136): CComponent->__get('email')
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/actions/CInlineAction.php(49): ApiController->actionLogin()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): CController->run('login')
+#6 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('api/login')
+#7 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#8 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/api/login
+HTTP_REFERER=http://localhost:9000/
+---
+2013/09/15 22:25:35 [error] [exception.CException] exception 'CException' with message 'Property "UserIdentity.email" is not defined.' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php(136): CComponent->__get('email')
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/actions/CInlineAction.php(49): ApiController->actionLogin()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): CController->run('login')
+#6 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('api/login')
+#7 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#8 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/api/login
+HTTP_REFERER=http://localhost:9000/
+---
+2013/09/15 22:29:11 [error] [php] Undefined index: model (/Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php:43)
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(286): ApiController->runAction()
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/create/order
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php (43)
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php (13)
+2013/09/15 22:34:48 [error] [php] Undefined index: model (/Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php:43)
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(286): ApiController->runAction()
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/create/order
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php (43)
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php (13)
+2013/09/15 22:34:53 [error] [php] Undefined index: model (/Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php:43)
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(286): ApiController->runAction()
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/create/order
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php (43)
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php (13)
+2013/09/15 22:34:58 [error] [php] Undefined index: model (/Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php:43)
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(286): ApiController->runAction()
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/create/order
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php (43)
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php (13)
+2013/09/15 22:46:14 [error] [php] Undefined index: model (/Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php:46)
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(286): ApiController->runAction()
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/create/order
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php (46)
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php (13)
+2013/09/16 22:05:39 [error] [php] Undefined index: text (/Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php:60)
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(286): ApiController->runAction()
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(265): ApiController->runActionWithFilters()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): ApiController->run()
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CWebApplication->run()
+REQUEST_URI=/api/create/order?XDEBUG_SESSION_START=afterwords
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php (60)
+in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php (13)
+2013/09/16 22:42:30 [error] [exception.CException] exception 'CException' with message 'Property "ApiController.username" is not defined.' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php(44): CComponent->__get('username')
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/actions/CInlineAction.php(49): ApiController->actionCreate()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#6 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('api/create')
+#7 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#8 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/api/create/order?XDEBUG_SESSION_START=afterwords
+HTTP_REFERER=http://localhost:9000/
+---
+2013/09/16 22:43:54 [error] [exception.CException] exception 'CException' with message 'Property "ApiController.username" is not defined.' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php(44): CComponent->__get('username')
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/actions/CInlineAction.php(49): ApiController->actionCreate()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#6 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('api/create')
+#7 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#8 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/api/create/order?XDEBUG_SESSION_START=afterwords&XDEBUG_SESSION_START=afterwords
+HTTP_REFERER=http://localhost:9000/
+---
+2013/09/16 22:46:38 [error] [exception.CException] exception 'CException' with message 'Property "ApiController.username" is not defined.' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CComponent.php:130
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/controllers/ApiController.php(44): CComponent->__get('username')
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/actions/CInlineAction.php(49): ApiController->actionCreate()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): CController->run('create')
+#6 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('api/create')
+#7 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#8 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#9 {main}
+REQUEST_URI=/api/create/order?XDEBUG_SESSION_START=afterwords&XDEBUG_SESSION_START=afterwords&XDEBUG_SESSION_START=afterwords
+HTTP_REFERER=http://localhost:9000/
+---

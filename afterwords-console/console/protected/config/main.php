@@ -47,14 +47,27 @@ return array(
             'showScriptName'=>false,
 			'urlFormat'=>'path',
 			'rules'=>array(
+                //REST CORS pattern
+                array('api/preflight', 'pattern'=>'api/*', 'verb'=>'OPTIONS'),
+                //REST patterns
+                array('api/login', 'pattern'=>'api/login'),
+                array('api/register', 'pattern'=>'api/users/register'),
+                array('api/create', 'pattern'=>'api/create/<model:\w+>', 'verb'=>'POST'),
+
+
+                //Default rules
 				'<controller:\w+>/<id:\d+>'=>'<controller>/view',
 				'<controller:\w+>/<action:\w+>/<id:\d+>'=>'<controller>/<action>',
 				'<controller:\w+>/<action:\w+>'=>'<controller>/<action>',
 			),
 		),
-//		'db'=>array(
-//			'connectionString' => 'sqlite:'.dirname(__FILE__).'/../data/testdrive.db',
-//		),
+        'authManager'=>array(
+            'class'=>'CDbAuthManager',
+            'connectionID'=>'db',
+            'itemTable' => 'tbl_auth_item',
+            'itemChildTable' => 'tbl_auth_item_child',
+            'assignmentTable' => 'tbl_auth_assignment',
+        ),
 		// uncomment the following to use a MySQL database
 		'db'=>array(
 			'connectionString' => 'mysql:host=localhost;mysql:port=8889;dbname=afterwords',
