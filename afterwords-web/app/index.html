@@ -9,7 +9,9 @@
         <title></title>
         <meta name="description" content=""/>
         <meta name="viewport" content="width=device-width"/>
+        <!-- build:css({.tmp,app}) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css"/>
+        <!-- endbuild -->
         <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css">
         <link rel="stylesheet" type="text/css" href="http://angular-ui.github.com/ng-grid/css/ng-grid.css" />
 
@@ -38,17 +40,17 @@
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-resource/angular-resource.js"></script>
         <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-        <script src="scripts/vendor/ui-bootstrap-tpls-0.1.0.js"></script>
-        <script src="scripts/vendor/webtoolkit.base64.js"></script>
-        <script src="bower_components/i18next/release/i18next-1.6.0.js"></script>
         <script src="bower_components/angular-placeholders/src/img/img.js"></script>
         <script src="bower_components/angular-placeholders/src/txt/txt.js"></script>
         <script src="bower_components/angular-http-auth/src/angular-http-auth.js"></script>
+        <script src="scripts/vendor/ui-bootstrap-tpls-0.1.0.js"></script>
+        <script src="scripts/vendor/webtoolkit.base64.js"></script>
+        <script src="bower_components/i18next/release/i18next-1.6.0.js"></script>
+
 
         <script type="text/javascript" src="http://angular-ui.github.com/ng-grid/lib/ng-grid.debug.js"></script>
 
-        <!-- build:js scripts/scripts.js -->
-        <!-- endbuild -->
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/services.js"></script>
         <script src="scripts/controllers/root.js"></script>
@@ -56,6 +58,7 @@
         <script src="scripts/controllers/login.js"></script>
         <script src="scripts/controllers/register.js"></script>
         <script src="scripts/controllers/jobs.js"></script>
+        <!-- endbuild -->
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>

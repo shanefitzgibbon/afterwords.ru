@@ -11,11 +11,9 @@
       <library name="PHP">
         <CLASSES>
           <root url="file:///Applications/MAMP/bin/php/php5.4.10/lib/php" />
-          <root url="file://$MODULE_DIR$/../yii" />
         </CLASSES>
         <SOURCES>
           <root url="file:///Applications/MAMP/bin/php/php5.4.10/lib/php" />
-          <root url="file://$MODULE_DIR$/../yii" />
         </SOURCES>
       </library>
     </orderEntry>

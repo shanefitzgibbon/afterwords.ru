@@ -6,8 +6,8 @@
 // endcode
 
 // devcode: production
-var RESOURCE_SERVER_URL = 'http://afterwords.local\\:8888';
-var SERVER_URL = 'http://afterwords.local:8888';
+var RESOURCE_SERVER_URL = 'http://afterwords.smfsoftware.com.au/console';
+var SERVER_URL = 'http://afterwords.smfsoftware.com.au/console';
 //endcode
 
 afterwords.factory('jobService', function($resource, $log){

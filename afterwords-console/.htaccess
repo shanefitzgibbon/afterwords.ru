@@ -1,0 +1,7 @@
+RewriteCond $1 ^lamp\/
+RewriteRule ^(.*) admin/ [L,PT]
+
+RewriteCond $1 ^admin\/
+RewriteRule ^(.*) console/index.php [L,PT]
+
+RewriteRule . frontend/www/index.php

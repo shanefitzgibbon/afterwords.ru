@@ -20,6 +20,8 @@ class ApiController extends Controller
      */
     private $format = 'json';
 
+    private $allowedOrigin = 'http://afterwords.ru';
+
     /**
      * @return array action filters
      */
@@ -72,6 +74,8 @@ class ApiController extends Controller
         $put_vars = CJSON::decode($json,true);  //true means use associative array
         $model = new User;
         $model->username = $put_vars['email'];
+        $model->first_name = $put_vars['firstName'];
+        $model->last_name = $put_vars['lastName'];
         $model->email = $put_vars['email'];
         $model->password = $put_vars['password'];
         $model->password_repeat = $put_vars['password'];
@@ -82,8 +86,8 @@ class ApiController extends Controller
                 'status' => 'created',
                 'id' => $model->id,
                 'email' => $model->email,
-                'firstName' => 'TestFirst',
-                'lastName' => 'TestLast'
+                'firstName' => $model->first_name,
+                'lastName' => $model->last_name
             );
             $this->_sendResponse(200, CJSON::encode($resultValues));
         }
@@ -112,8 +116,8 @@ class ApiController extends Controller
             $user=User::model()->find('LOWER(username)=?',array(strtolower($model->username)));
             $resultValues = array(
                 'email' => $user->email,
-                'firstName' => 'TestFirst',
-                'lastName' => 'TestLast'
+                'firstName' => $user->first_name,
+                'lastName' => $user->last_name
             );
             $this->_sendResponse(200, CJSON::encode($resultValues));
 
@@ -155,7 +159,12 @@ class ApiController extends Controller
         // and the content type
         header('Content-type: ' . $content_type);
 
-        header("Access-Control-Allow-Origin: http://localhost:9000");
+        $origin = (isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : null);
+        if ($origin){
+            if ($origin == 'http://localhost:9000' || $origin == 'http://afterwords.local:9000' || $origin == 'http://afterwords.ru' || $origin == 'http://afterwords.smfsoftware.com.au')
+                $this->allowedOrigin = $origin;
+                header("Access-Control-Allow-Origin: " . $this->allowedOrigin);
+        }
         header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
         header("Access-Control-Allow-Headers: Content-Type, X-Requested-With, Accept, Authorization");
         header("Access-Control-Allow-Credentials: true");

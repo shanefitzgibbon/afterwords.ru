@@ -7,6 +7,10 @@
 
 		<?php echo $form->textFieldRow($model,'username',array('class'=>'span5','maxlength'=>255)); ?>
 
+        <?php echo $form->textFieldRow($model,'first_name',array('class'=>'span5','maxlength'=>255)); ?>
+
+        <?php echo $form->textFieldRow($model,'last_name',array('class'=>'span5','maxlength'=>255)); ?>
+
 		<?php echo $form->textFieldRow($model,'email',array('class'=>'span5','maxlength'=>255)); ?>
 
 			<?php echo $form->textFieldRow($model,'last_login_time',array('class'=>'span5')); ?>

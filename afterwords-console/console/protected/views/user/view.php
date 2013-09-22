@@ -20,6 +20,8 @@ array('label'=>'Manage User','url'=>array('admin')),
 'attributes'=>array(
 		'id',
 		'username',
+        'first_name',
+        'last_name',
 		'email',
 		'password',
 		'last_login_time',

@@ -1,2 +1,4 @@
-
+yii
 .DS_Store
+afterwords-console/console/assets
+afterwords-console/console/protected/runtime/state.bin

@@ -524,3 +524,228 @@ Stack trace:
 REQUEST_URI=/api/create/order?XDEBUG_SESSION_START=afterwords&XDEBUG_SESSION_START=afterwords&XDEBUG_SESSION_START=afterwords
 HTTP_REFERER=http://localhost:9000/
 ---
+2013/09/16 23:43:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "dist".' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('dist')
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/dist
+---
+2013/09/17 21:03:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "jobs".' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php:483
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(270): CController->missingAction('jobs')
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): CController->run('jobs')
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('api/jobs/pendin...')
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/api/jobs/pending
+HTTP_REFERER=http://afterwords.smfsoftware.com.au/
+---
+2013/09/17 21:03:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "jobs".' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php:483
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(270): CController->missingAction('jobs')
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): CController->run('jobs')
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('api/jobs/comple...')
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/api/jobs/completed
+HTTP_REFERER=http://afterwords.smfsoftware.com.au/
+---
+2013/09/17 21:23:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "jobs".' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php:483
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(270): CController->missingAction('jobs')
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): CController->run('jobs')
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('api/jobs/comple...')
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/api/jobs/completed
+HTTP_REFERER=http://afterwords.smfsoftware.com.au/
+---
+2013/09/17 21:23:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "jobs".' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php:483
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CController.php(270): CController->missingAction('jobs')
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(282): CController->run('jobs')
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('api/jobs/pendin...')
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/api/jobs/pending
+HTTP_REFERER=http://afterwords.smfsoftware.com.au/
+---
+2013/09/17 21:45:52 [error] [php] PDO::__construct(): [2002] No such file or directory (trying to connect via unix:///var/mysql/mysql.sock) (/Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbConnection.php:423)
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbConnection.php(308): CDbConnection->setActive()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(442): CConsoleApplication->getComponent()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(451): MigrateCommand->getDbConnection()
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(482): MigrateCommand->getMigrationHistory()
+#6 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(84): MigrateCommand->getNewMigrations()
+#7 unknown(0): MigrateCommand->actionUp()
+#8 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs()
+#9 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleCommandRunner.php(67): MigrateCommand->run()
+#10 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleApplication.php(91): CConsoleCommandRunner->run()
+#11 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CConsoleApplication->processRequest()
+#12 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/yiic.php(33): CConsoleApplication->run()
+#13 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/yiic.php(7): require_once()
+#14 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/yiic(4): require_once()
+
+2013/09/17 21:47:30 [error] [php] PDO::__construct(): [2002] No such file or directory (trying to connect via unix:///var/mysql/mysql.sock) (/Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbConnection.php:423)
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbConnection.php(308): CDbConnection->setActive()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(442): CConsoleApplication->getComponent()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(451): MigrateCommand->getDbConnection()
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(482): MigrateCommand->getMigrationHistory()
+#6 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(84): MigrateCommand->getNewMigrations()
+#7 unknown(0): MigrateCommand->actionUp()
+#8 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs()
+#9 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleCommandRunner.php(67): MigrateCommand->run()
+#10 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleApplication.php(91): CConsoleCommandRunner->run()
+#11 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CConsoleApplication->processRequest()
+#12 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/yiic.php(33): CConsoleApplication->run()
+#13 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/yiic.php(7): require_once()
+#14 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/yiic(4): require_once()
+
+2013/09/17 21:47:57 [error] [php] PDO::__construct(): [2002] No such file or directory (trying to connect via unix:///var/mysql/mysql.sock) (/Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbConnection.php:423)
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbConnection.php(308): CDbConnection->setActive()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(442): CConsoleApplication->getComponent()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(451): MigrateCommand->getDbConnection()
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(482): MigrateCommand->getMigrationHistory()
+#6 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(84): MigrateCommand->getNewMigrations()
+#7 unknown(0): MigrateCommand->actionUp()
+#8 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs()
+#9 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleCommandRunner.php(67): MigrateCommand->run()
+#10 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleApplication.php(91): CConsoleCommandRunner->run()
+#11 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CConsoleApplication->processRequest()
+#12 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/yiic.php(33): CConsoleApplication->run()
+#13 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/yiic.php(7): require_once()
+#14 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/yiic(4): require_once()
+
+2013/09/17 21:48:31 [error] [php] PDO::__construct(): [2002] No such file or directory (trying to connect via unix:///var/mysql/mysql.sock) (/Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbConnection.php:423)
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbConnection.php(330): CDbConnection->open()
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbConnection.php(308): CDbConnection->setActive()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CModule.php(387): CDbConnection->init()
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(442): CConsoleApplication->getComponent()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(451): MigrateCommand->getDbConnection()
+#5 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(482): MigrateCommand->getMigrationHistory()
+#6 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(84): MigrateCommand->getNewMigrations()
+#7 unknown(0): MigrateCommand->actionUp()
+#8 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs()
+#9 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleCommandRunner.php(67): MigrateCommand->run()
+#10 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleApplication.php(91): CConsoleCommandRunner->run()
+#11 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CConsoleApplication->processRequest()
+#12 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/yiic.php(33): CConsoleApplication->run()
+#13 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/yiic.php(7): require_once()
+#14 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/yiic(4): require_once()
+
+2013/09/17 22:01:54 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'STRING NOT NULL DEFAULT "First"' at line 1. The SQL statement executed was: ALTER TABLE `tbl_user` ADD `first_name` STRING NOT NULL DEFAULT "First".
+2013/09/17 22:01:54 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'STRING NOT NULL DEFAULT "First"' at line 1. The SQL statement executed was: ALTER TABLE `tbl_user` ADD `first_name` STRING NOT NULL DEFAULT "First"' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbCommand.php:357
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbCommand.php(1374): CDbCommand->execute()
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbMigration.php(281): CDbCommand->addColumn('tbl_user', 'first_name', 'STRING NOT NULL...')
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/migrations/m130917_114223_add_user_name_columns.php(8): CDbMigration->addColumn('tbl_user', 'first_name', 'STRING NOT NULL...')
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(385): m130917_114223_add_user_name_columns->up()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(109): MigrateCommand->migrateUp('m130917_114223_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleCommandRunner.php(67): CConsoleCommand->run(Array)
+#8 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleApplication.php(91): CConsoleCommandRunner->run(Array)
+#9 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CConsoleApplication->processRequest()
+#10 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/yiic.php(33): CApplication->run()
+#11 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/yiic.php(7): require_once('/Users/shane/Pr...')
+#12 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/yiic(4): require_once('/Users/shane/Pr...')
+#13 {main}
+---
+2013/09/17 22:02:54 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'STRING NOT NULL DEFAULT `First`' at line 1. The SQL statement executed was: ALTER TABLE `tbl_user` ADD `first_name` STRING NOT NULL DEFAULT `First`.
+2013/09/17 22:02:54 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'STRING NOT NULL DEFAULT `First`' at line 1. The SQL statement executed was: ALTER TABLE `tbl_user` ADD `first_name` STRING NOT NULL DEFAULT `First`' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbCommand.php:357
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbCommand.php(1374): CDbCommand->execute()
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbMigration.php(281): CDbCommand->addColumn('tbl_user', 'first_name', 'STRING NOT NULL...')
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/migrations/m130917_114223_add_user_name_columns.php(8): CDbMigration->addColumn('tbl_user', 'first_name', 'STRING NOT NULL...')
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(385): m130917_114223_add_user_name_columns->up()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(109): MigrateCommand->migrateUp('m130917_114223_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleCommandRunner.php(67): CConsoleCommand->run(Array)
+#8 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleApplication.php(91): CConsoleCommandRunner->run(Array)
+#9 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CConsoleApplication->processRequest()
+#10 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/yiic.php(33): CApplication->run()
+#11 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/yiic.php(7): require_once('/Users/shane/Pr...')
+#12 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/yiic(4): require_once('/Users/shane/Pr...')
+#13 {main}
+---
+2013/09/17 22:20:21 [error] [system.db.CDbCommand] CDbCommand::execute() failed: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'STRING NOT NULL AFTER username' at line 1. The SQL statement executed was: ALTER TABLE `tbl_user` ADD `first_name` STRING NOT NULL AFTER username.
+2013/09/17 22:20:21 [error] [exception.CDbException] exception 'CDbException' with message 'CDbCommand failed to execute the SQL statement: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'STRING NOT NULL AFTER username' at line 1. The SQL statement executed was: ALTER TABLE `tbl_user` ADD `first_name` STRING NOT NULL AFTER username' in /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbCommand.php:357
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbCommand.php(1374): CDbCommand->execute()
+#1 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/db/CDbMigration.php(281): CDbCommand->addColumn('tbl_user', 'first_name', 'STRING NOT NULL...')
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/migrations/m130917_114223_add_user_name_columns.php(8): CDbMigration->addColumn('tbl_user', 'first_name', 'STRING NOT NULL...')
+#3 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(385): m130917_114223_add_user_name_columns->up()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/cli/commands/MigrateCommand.php(109): MigrateCommand->migrateUp('m130917_114223_...')
+#5 [internal function]: MigrateCommand->actionUp(Array)
+#6 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#7 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleCommandRunner.php(67): CConsoleCommand->run(Array)
+#8 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/console/CConsoleApplication.php(91): CConsoleCommandRunner->run(Array)
+#9 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/base/CApplication.php(169): CConsoleApplication->processRequest()
+#10 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/yii/framework/yiic.php(33): CApplication->run()
+#11 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/yiic.php(7): require_once('/Users/shane/Pr...')
+#12 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/protected/yiic(4): require_once('/Users/shane/Pr...')
+#13 {main}
+---
+2013/09/18 01:10:20 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "jobs".' in /Users/shane/Projects/clients/afterwords.ru/yii/framework/web/CController.php:483
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/yii/framework/web/CController.php(270): CController->missingAction('jobs')
+#1 /Users/shane/Projects/clients/afterwords.ru/yii/framework/web/CWebApplication.php(282): CController->run('jobs')
+#2 /Users/shane/Projects/clients/afterwords.ru/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('api/jobs/pendin...')
+#3 /Users/shane/Projects/clients/afterwords.ru/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/api/jobs/pending?XDEBUG_SESSION_START=afterwords
+HTTP_REFERER=http://afterwords.smfsoftware.com.au/jobs
+---
+2013/09/18 01:10:25 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "jobs".' in /Users/shane/Projects/clients/afterwords.ru/yii/framework/web/CController.php:483
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/yii/framework/web/CController.php(270): CController->missingAction('jobs')
+#1 /Users/shane/Projects/clients/afterwords.ru/yii/framework/web/CWebApplication.php(282): CController->run('jobs')
+#2 /Users/shane/Projects/clients/afterwords.ru/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('api/jobs/comple...')
+#3 /Users/shane/Projects/clients/afterwords.ru/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#4 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/api/jobs/completed?XDEBUG_SESSION_START=afterwords
+HTTP_REFERER=http://afterwords.smfsoftware.com.au/
+---
+2013/09/19 21:47:01 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "console/document".' in /Users/shane/Projects/clients/afterwords.ru/yii/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('console/documen...')
+#1 /Users/shane/Projects/clients/afterwords.ru/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#2 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/console/document/1?XDEBUG_SESSION_START=afterwords
+---
+2013/09/19 23:56:30 [error] [exception.CHttpException.403] exception 'CHttpException' with message 'You are not authorized to perform this action.' in /Users/shane/Projects/clients/afterwords.ru/yii/framework/web/auth/CAccessControlFilter.php:179
+Stack trace:
+#0 /Users/shane/Projects/clients/afterwords.ru/yii/framework/web/auth/CAccessControlFilter.php(142): CAccessControlFilter->accessDenied(Object(CWebUser), 'You are not aut...')
+#1 /Users/shane/Projects/clients/afterwords.ru/yii/framework/web/filters/CFilter.php(38): CAccessControlFilter->preFilter(Object(CFilterChain))
+#2 /Users/shane/Projects/clients/afterwords.ru/yii/framework/web/CController.php(1145): CFilter->filter(Object(CFilterChain))
+#3 /Users/shane/Projects/clients/afterwords.ru/yii/framework/web/filters/CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#4 /Users/shane/Projects/clients/afterwords.ru/yii/framework/web/filters/CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#5 /Users/shane/Projects/clients/afterwords.ru/yii/framework/web/CController.php(291): CFilterChain->run()
+#6 /Users/shane/Projects/clients/afterwords.ru/yii/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#7 /Users/shane/Projects/clients/afterwords.ru/yii/framework/web/CWebApplication.php(282): CController->run('admin')
+#8 /Users/shane/Projects/clients/afterwords.ru/yii/framework/web/CWebApplication.php(141): CWebApplication->runController('order/admin')
+#9 /Users/shane/Projects/clients/afterwords.ru/yii/framework/base/CApplication.php(169): CWebApplication->processRequest()
+#10 /Users/shane/Projects/clients/afterwords.ru/afterwords-console/console/index.php(13): CApplication->run()
+#11 {main}
+REQUEST_URI=/order/admin?XDEBUG_SESSION_START=afterwords
+HTTP_REFERER=http://localhost:8888/order/10
+---
