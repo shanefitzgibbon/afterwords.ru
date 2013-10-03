@@ -2,19 +2,23 @@
   "name": "afterwords-web",
   "version": "0.0.1",
   "dependencies": {
-      "angular": "~1.0.5",
-      "angular-mocks": "~1.0.5",
-      "angular-ui": "~0.4.0",
-      "angular-resource": "~1.0.5",
-      "font-awesome": "~3.0.2",
-      "i18next": "~1.6.0",
-      "angular-placeholders": "latest",
-      "jquery": "~1.9.1",
-      "angular-cookies": "~1.0.5",
-      "angular-http-auth": "https://github.com/shanefitzgibbon/angular-http-auth.git"
+    "angular": "1.2.0-rc.2",
+    "angular-route": "1.2.0-rc.2",
+    "angular-mocks": "1.2.0-rc.2",
+    "angular-ui": "~0.4.0",
+    "angular-resource": "1.2.0-rc.2",
+    "font-awesome": "~3.0.2",
+    "i18next": "~1.6.0",
+    "angular-placeholders": "latest",
+    "jquery": "~1.9.1",
+    "angular-cookies": "1.2.0-rc.2",
+    "angular-http-auth": "https://github.com/shanefitzgibbon/angular-http-auth.git"
   },
   "devDependencies": {
     "angular-mocks": "~1.0.7",
     "angular-scenario": "~1.0.7"
+  },
+  "resolutions": {
+    "angular": "1.2.0-rc.2"
   }
 }

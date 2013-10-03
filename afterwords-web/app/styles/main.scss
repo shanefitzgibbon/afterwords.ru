@@ -2,9 +2,14 @@
  @import "compass/typography/text/replacement";
 
  .page-header {
+   padding-bottom: 0;
+   margin: 0;
+   border-bottom: none;
    text-align: center;
    h1 {
-     @include replace-text-with-dimensions('logo.png');
+     width: 960px;
+     height: 175px;
+     @include replace-text('logo_clipped_rev_1.png');
    }
  }
 
@@ -13,7 +18,7 @@
      text-align: center;
    }
    #new-job-steps {
-     padding-top: 4em;
+     padding-top: 2em;
      p {
        font-size: 28px;
      }

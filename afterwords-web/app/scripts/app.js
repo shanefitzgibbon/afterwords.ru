@@ -2,7 +2,7 @@
 
 function valueFn(value) {return function() {return value;};}
 
-var afterwords = angular.module('afterwords', ['http-auth-interceptor', 'ngResource', 'ngCookies', 'ui.bootstrap', 'placeholders.img'])
+var afterwords = angular.module('afterwords', ['http-auth-interceptor','ngRoute', 'ngResource', 'ngCookies', 'ui.bootstrap', 'placeholders.img'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {
@@ -10,19 +10,34 @@ var afterwords = angular.module('afterwords', ['http-auth-interceptor', 'ngResou
         controller: 'MainCtrl'
       })
       .when('/about-us', {
-        redirectTo: function() {
-          return 'about-' + $.i18n.lng();
-        }
+        templateUrl: function() {
+          return 'views/about-' + $.i18n.lng() + '.html';
+        },
+        controller: StaticCntl
       })
-      .when('/about-ru', {
-        templateUrl: 'views/about-ru.html'
+      .when('/faq', {
+          templateUrl: function() {
+          return 'views/faq-' + $.i18n.lng() + '.html';
+        },
+        controller: StaticCntl
       })
-      .when('/about-en', {
-        templateUrl: 'views/about-en.html'
+      .when('/editors', {
+        templateUrl: function() {
+          return 'views/editors-' + $.i18n.lng() + '.html';
+        },
+        controller: StaticCntl
       })
-      .when('/jobs', {
-        templateUrl: 'views/jobs.html',
-        controller: 'JobsCtrl'
+      .when('/prices', {
+        templateUrl: function() {
+          return 'views/prices-' + $.i18n.lng() + '.html';
+        },
+        controller: StaticCntl
+      })
+      .when('/contacts', {
+        templateUrl: function() {
+          return 'views/contacts-' + $.i18n.lng() + '.html';
+        },
+        controller: StaticCntl
       })
       .otherwise({
         redirectTo: '/'
@@ -64,4 +79,16 @@ var afterwords = angular.module('afterwords', ['http-auth-interceptor', 'ngResou
   .config(function($dialogProvider){
     $dialogProvider.options({dialogFade: true, backdropFade: false})
   });
+
+function StaticCntl($scope, $routeParams) {
+  $scope.name = "StaticCntl";
+  $scope.params = $routeParams;
+}
+
+function HeaderController($scope, $location)
+{
+  $scope.isActive = function (viewLocation) {
+    return viewLocation === $location.path();
+  };
+}
 
