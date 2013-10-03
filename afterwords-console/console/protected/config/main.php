@@ -1,5 +1,7 @@
 <?php
 
+require_once( dirname(__FILE__) . '/../components/helpers.php');
+
 // uncomment the following to define a path alias
 // Yii::setPathOfAlias('local','path/to/local-folder');s
 
@@ -101,6 +103,10 @@ return array(
         'bootstrap' => array(
             'class' => 'ext.bootstrap.components.Bootstrap',
             'responsiveCss' => true,
+        ),
+        'format'=>array(
+            'class'=>'AWFormatter',
+            'dateFormat'=>'d/m/Y',
         ),
 	),
 

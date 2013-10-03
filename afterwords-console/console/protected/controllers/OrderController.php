@@ -6,7 +6,7 @@ class OrderController extends Controller
 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 * using two-column layout. See 'protected/views/layouts/column2.php'.
 */
-public $layout='//layouts/column2';
+public $layout='//layouts/column1';
 
 /**
 * @return array action filters
@@ -133,6 +133,12 @@ $model=Order::model()->findByPk($id);
 if($model===null)
 throw new CHttpException(404,'The requested page does not exist.');
 return $model;
+}
+
+protected function renderTruncatedText($data, $row, $dataColumn){
+    $propName = $dataColumn->name;
+    $value=CHtml::value($data, $propName);
+    echo truncate($value, 90);
 }
 
 /**

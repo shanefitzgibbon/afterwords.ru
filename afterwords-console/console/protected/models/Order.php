@@ -21,6 +21,11 @@
  */
 class Order extends AfterwordsActiveRecord
 {
+    const STATUS_UNASSIGNED = 0;
+    const STATUS_ASSIGNED = 1;
+    const STATUS_COMPLETED = 2;
+    const STATUS_DELETED = 3;
+
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -63,9 +68,9 @@ class Order extends AfterwordsActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'documents' => array(self::HAS_MANY, 'Document', 'order_id'),
+			'document' => array(self::HAS_ONE, 'Document', 'order_id'),
 			'customer' => array(self::BELONGS_TO, 'User', 'customer_id'),
-			'payments' => array(self::HAS_MANY, 'Payment', 'order_id'),
+			'payment' => array(self::HAS_ONE, 'Payment', 'order_id'),
 		);
 	}
 
