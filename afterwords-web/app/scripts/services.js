@@ -1,13 +1,13 @@
 'use strict';
 
 // devcode: !production
-//var RESOURCE_SERVER_URL = 'http://localhost\\:9000';
-//var SERVER_URL = 'http://localhost:9000';
+var RESOURCE_SERVER_URL = 'http://afterwords.console.smfsoftware.com.au/';
+var SERVER_URL = 'http://afterwords.console.smfsoftware.com.au/';
 // endcode
 
 // devcode: production
-var RESOURCE_SERVER_URL = 'http://afterwords.smfsoftware.com.au/console';
-var SERVER_URL = 'http://afterwords.smfsoftware.com.au/console';
+//var RESOURCE_SERVER_URL = 'http://afterwords.smfsoftware.com.au/console';
+//var SERVER_URL = 'http://afterwords.smfsoftware.com.au/console';
 //endcode
 
 afterwords.factory('jobService', function($resource, $log){

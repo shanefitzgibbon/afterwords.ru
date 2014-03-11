@@ -66,7 +66,7 @@ var afterwords = angular.module('afterwords', ['http-auth-interceptor','ngRoute'
   })
   .filter('i18n', valueFn(function(key, options) { return $.t(key, options);}))
   .service('Job', function ($resource) {
-    return $resource('http://afterwords.local\\:9000/jobs/:jobId', {}, {
+    return $resource('http://afterwords.console.smfsoftware.com.au/jobs/:jobId', {}, {
       update: {method:'PUT'}
     });
   })

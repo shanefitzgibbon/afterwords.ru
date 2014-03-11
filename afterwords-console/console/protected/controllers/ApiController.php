@@ -14,6 +14,10 @@ class ApiController extends Controller
      */
     Const APPLICATION_ID = 'AFTERWORDSRU';
 
+    Const WORDS_PER_PAGE = 300;
+    Const COST_PER_PAGE = 250;
+    Const COST_OF_ANALYSIS_PER_PAGE = 700;
+
     /**
      * Default response format
      * either 'json' or 'xml'
@@ -251,9 +255,13 @@ class ApiController extends Controller
         $transaction = Yii::app()->db->beginTransaction();
         $order = new Order;
         $order->customer_id = $customer->id;
+        $wordCount = str_word_count($originalText);
+        $order->page_count = $wordCount / ApiController::WORDS_PER_PAGE;
+        $order->total_cost = $order->page_count * ApiController::COST_PER_PAGE;
         $success = $order->save(false);
         $document = new Document;
         $document->original_text = $originalText;
+        $document->edited_text = $originalText;
         $document->order_id = $order->id;
         $success = $success ? $document->save(false) : $success;
         $payment = new Payment;
